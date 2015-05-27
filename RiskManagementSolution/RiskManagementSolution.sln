@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructure", "infrastructure", "{ADEC1C53-5043-41FD-A936-6EC37EA55D95}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web", "web", "{54BEB6FC-8851-4B97-A514-CFE6D1AF5684}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "log", "log", "{57248CC7-37DD-43BA-9E58-ED79FA822CB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Ktbl.RiskManagement.Map", "..\infrastructure\Com.Ktbl.RiskManagement.Map\Com.Ktbl.RiskManagement.Map.csproj", "{5B383F96-8977-4108-AD75-5AE899725649}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Ktbl.RiskManagement.Domain", "..\infrastructure\Com.Ktbl.RiskManagement.Domain\Com.Ktbl.RiskManagement.Domain.csproj", "{29139670-58D9-438F-ACF5-E439FF7E0036}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Ktbl.RiskManagement.Aspect", "..\log\Com.Ktbl.RiskManagement.Aspect\Com.Ktbl.RiskManagement.Aspect.csproj", "{37ECF17C-741B-4E62-AA78-65D0B8AC3E4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Ktbl.RiskManagement.MongoDB", "..\log\Com.Ktbl.RiskManagement.MongoDB\Com.Ktbl.RiskManagement.MongoDB.csproj", "{F9A49E55-ABEA-4CE9-A9E3-29FB84576FBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Ktbl.RiskManagement.Web", "..\web\Com.Ktbl.RiskManagement.Web\Com.Ktbl.RiskManagement.Web.csproj", "{8613105B-98A7-4455-BC90-945F797BA0D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log4Net-MongoAppender", "..\log\Log4Net-MongoAppender\Log4Net-MongoAppender.csproj", "{F3641788-4CA9-4D5C-BC9F-F30A91281AC7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B383F96-8977-4108-AD75-5AE899725649}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B383F96-8977-4108-AD75-5AE899725649}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B383F96-8977-4108-AD75-5AE899725649}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B383F96-8977-4108-AD75-5AE899725649}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29139670-58D9-438F-ACF5-E439FF7E0036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29139670-58D9-438F-ACF5-E439FF7E0036}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29139670-58D9-438F-ACF5-E439FF7E0036}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29139670-58D9-438F-ACF5-E439FF7E0036}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37ECF17C-741B-4E62-AA78-65D0B8AC3E4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37ECF17C-741B-4E62-AA78-65D0B8AC3E4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37ECF17C-741B-4E62-AA78-65D0B8AC3E4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37ECF17C-741B-4E62-AA78-65D0B8AC3E4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9A49E55-ABEA-4CE9-A9E3-29FB84576FBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9A49E55-ABEA-4CE9-A9E3-29FB84576FBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9A49E55-ABEA-4CE9-A9E3-29FB84576FBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9A49E55-ABEA-4CE9-A9E3-29FB84576FBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8613105B-98A7-4455-BC90-945F797BA0D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8613105B-98A7-4455-BC90-945F797BA0D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8613105B-98A7-4455-BC90-945F797BA0D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8613105B-98A7-4455-BC90-945F797BA0D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3641788-4CA9-4D5C-BC9F-F30A91281AC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3641788-4CA9-4D5C-BC9F-F30A91281AC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3641788-4CA9-4D5C-BC9F-F30A91281AC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3641788-4CA9-4D5C-BC9F-F30A91281AC7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5B383F96-8977-4108-AD75-5AE899725649} = {ADEC1C53-5043-41FD-A936-6EC37EA55D95}
+		{29139670-58D9-438F-ACF5-E439FF7E0036} = {ADEC1C53-5043-41FD-A936-6EC37EA55D95}
+		{8613105B-98A7-4455-BC90-945F797BA0D0} = {54BEB6FC-8851-4B97-A514-CFE6D1AF5684}
+		{37ECF17C-741B-4E62-AA78-65D0B8AC3E4A} = {57248CC7-37DD-43BA-9E58-ED79FA822CB0}
+		{F9A49E55-ABEA-4CE9-A9E3-29FB84576FBE} = {57248CC7-37DD-43BA-9E58-ED79FA822CB0}
+		{F3641788-4CA9-4D5C-BC9F-F30A91281AC7} = {57248CC7-37DD-43BA-9E58-ED79FA822CB0}
+	EndGlobalSection
+EndGlobal
