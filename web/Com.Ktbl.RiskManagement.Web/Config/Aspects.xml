@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+         xmlns:aop="http://www.springframework.net/aop">
+
+ 
+    <description>An example that demonstrates use of a poincut.</description>
+  
+
+  <!--<object id="myAnotherServiceCommand" type="Spring.AopQuickStart.Commands.AnotherServiceCommand, Spring.AopQuickStart.Step7"/>-->
+
+  <!-- The rest of the config file is common no matter how many objects you add -->
+  <object id="serviceOperation" type="Spring.Aop.Support.SdkRegularExpressionMethodPointcut, Spring.Aop">
+    <property name="pattern" value="^Com.Ktbl.*"/>
+    
+  </object>
+
+  <object id="throwsAdvice" type="Com.Ktbl.RiskManagement.Aspect.LoggingThrowsAdvice, Com.Ktbl.RiskManagement.Aspect">
+    <property name="MongoDBConnection" value="mongodb://221.23.21.46"/>
+    
+  </object>
+
+  <aop:config>
+
+    <aop:advisor id="getDescriptionAdvisor" pointcut-ref="serviceOperation" advice-ref="throwsAdvice"/>
+
+  </aop:config>
+  
+  <!--<object id="aroundAdvisor" type="Spring.Aop.Support.NameMatchMethodPointcutAdvisor, Spring.Aop">
+    <property name="Advice">
+      <object type="KTBL.NCRS.Aspects.ConsoleLoggingAroundAdvice,  KTBL.NCRS.Aspects"/>
+    </property>
+    <property name="MappedNames">
+      <list>
+        <value>*Get</value>
+      </list>
+    </property>
+  </object>-->
+
+  <!-- Using ObjectNameAutoProxyCreator -->
+  <!-- Apply 'aroundAdvisor' on all objects with id that ends by 'Command' -->
+  
+  <!--<object type="Spring.Aop.Framework.AutoProxy.ObjectNameAutoProxyCreator, Spring.Aop">
+    <property name="ObjectNames">
+      <list>
+        <value>*Controller#*</value>
+      </list>
+    </property>
+    <property name="InterceptorNames">
+      <list>
+        <value>throwsAdvice</value>
+      </list>
+    </property>
+  </object>-->
+
+  <!--<object type="Spring.Aop.Framework.AutoProxy.DefaultAdvisorAutoProxyCreator, Spring.Aop" />-->
+
+</objects>

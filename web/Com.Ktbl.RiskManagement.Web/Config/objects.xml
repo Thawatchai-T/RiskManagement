@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net" default-autowire="constructor">
+
+  <!--<object id="nhHelpersFactory" type="KTBLeasing.FrontLeasing.NHHelpers, KTBLeasing.FrontLeasing">
+    --><!--[20150331] Add by Woody Inject property--><!--
+    <property name="Server" value="221.23.0.70"/>
+    <property name="Port" value="1521"/>
+    <property name="Username" value="FrontLeasing"/>
+    <property name="Password" value="ktblitadmin"/>
+    <property name="Instance" value="ktbl"/>
+  </object>-->
+  
+
+  <!--<object id="MyMovieLister" type="Spring.Examples.MovieFinder.MovieLister, Spring.Examples.MovieFinder">
+    --><!-- using setter injection... --><!--
+    <property name="movieFinder" ref="MyMovieFinder"/>
+    
+  </object>-->
+
+  <!--<object id="listOfProvince" type="System.Collections.Generic.Dictionary&lt;string,string&gt;"
+        factory-object="nhHelpersFactory"
+        factory-method="CreateSessionFactory" singleton="true"/>-->
+
+  <object type="Com.Ktbl.RiskManagement.MongoDB.Log.MongoDBAppender, Com.Ktbl.RiskManagement.MongoDB" singleton="false" >
+    <property name="ConnectionString"  value="mongodb://localhost" />
+    <property name="ConnectionStringName"  value="mongodb-log4net" />
+    <property name="CollectionName"  value="logs" />
+  </object>
+  
+</objects>

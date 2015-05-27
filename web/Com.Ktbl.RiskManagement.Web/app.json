@@ -1,0 +1,62 @@
+{
+   "name": "RiskManagement",
+   "indexHtmlPath": "index.html",
+   "classpath": "${app.dir}/app",
+   "overrides": "${app.dir}/overrides",
+   "framework": "ext",
+   "theme": "ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c",
+   "requires": [],
+   "sass": {
+      "namespace": "RiskManagement"
+   },
+   "js": [
+      {
+         "path": "${framework.dir}/build/ext-all-rtl-debug.js"
+      },
+      {
+         "path": "app.js",
+         "bundle": true
+      }
+   ],
+   "css": [
+      {
+         "path": "bootstrap.css",
+         "bootstrap": true
+      }
+   ],
+   "production": {},
+   "testing": {},
+   "development": {},
+   "bootstrap": {
+      "base": "${app.dir}",
+      "manifest": "bootstrap.json",
+      "microloader": "bootstrap.js",
+      "css": "bootstrap.css"
+   },
+   "output": {
+      "base": "${workspace.build.dir}/${build.environment}/${app.name}"
+   },
+   "appCache": {
+      "cache": [
+         "index.html"
+      ],
+      "network": [
+         "*"
+      ],
+      "fallback": []
+   },
+   "resources": [],
+   "ignore": [
+      "(^|/)CVS(/?$|/.*?$)"
+   ],
+   "archivePath": "archive",
+   "slicer": {
+      "js": [
+         {
+            "path": "${app.dir}/sass/example/custom.js",
+            "isWidgetManifest": true
+         }
+      ]
+   },
+   "id": "e696fbfa-a980-465f-9406-1922555bd295"
+}

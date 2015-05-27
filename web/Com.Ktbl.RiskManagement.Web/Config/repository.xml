@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net" default-autowire="constructor">
+  
+  <!--<object id="sessionFactory"
+        type="NHibernate.ISessionFactory, NHibernate"
+        factory-object="nhHelpersFactory"
+        factory-method="CreateSessionFactory" singleton="true"/>
+
+  <object id="usersAuthorizeRepository"
+              type="KTBLeasing.FrontLeasing.Mapping.Orcl.Reposotory.UsersAuthorizeRepository, KTBLeasing.FrontLeasing.Mapping.Orcl">
+    <property name="SessionFactory"  ref="sessionFactory"/>
+  </object>-->
+  
+</objects>

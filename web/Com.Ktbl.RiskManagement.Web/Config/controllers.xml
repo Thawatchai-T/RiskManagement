@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net" default-autowire="constructor">
+
+  <object type="Com.Ktbl.RiskManagement.Web.Controllers.CommonController, Com.Ktbl.RiskManagement.Web" singleton="false" >
+    <property name="Title"  value="Common test common Controller" />
+  </object>
+  
+  <!--db2-->
+  <!--<object id="repositorydb2" type="Com.Ktbl.Database.DB2.Repository.Repository, Com.Ktbl.Database.DB2" >
+    <constructor-arg index="0" value="IBMDADB2.DB2COPY1"/>
+    <constructor-arg index="1" value="JUNEJULY"/>
+    <constructor-arg index="2" value="KEMADIST"/>
+    <constructor-arg index="3" value="UAT64"/>
+    <constructor-arg index="4" value="221.23.4.78"/>
+    <property name="DbAuth" ref="db2util"/>
+  </object>-->
+  
+</objects>
