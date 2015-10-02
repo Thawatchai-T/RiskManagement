@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Com.Ktbl.RiskManagement.Domain</RootNamespace>
     <AssemblyName>Com.Ktbl.RiskManagement.Domain</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -40,8 +43,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ApplicationNameDomain.cs" />
+    <Compile Include="CCISourceDomain.cs" />
+    <Compile Include="Common\RegistrationTypeDomain.cs" />
+    <Compile Include="Common\CountryDomain.cs" />
+    <Compile Include="Common\PoliticianRelationshipDomain.cs" />
+    <Compile Include="ViewShareholdersDomain.cs" />
+    <Compile Include="CorporationDomain.cs" />
+    <Compile Include="Db2Linq.cs" />
+    <Compile Include="Herders.cs" />
+    <Compile Include="PersonalModel.cs" />
+    <Compile Include="Common\BusinessTypeDomain.cs" />
+    <Compile Include="Common\CommonDomain.cs" />
+    <Compile Include="Common\CommitteeTypeDomain.cs" />
+    <Compile Include="Common\OccupationTypeDomain.cs" />
+    <Compile Include="Common\OccupationGroupDomain.cs" />
+    <Compile Include="Common\CurrentlyLivesDomain.cs" />
+    <Compile Include="Common\ISicCodeDomain.cs" />
+    <Compile Include="Common\LocationIncomeDomain.cs" />
+    <Compile Include="Common\OccupationCatelogyDomain.cs" />
+    <Compile Include="Common\PositionDomain.cs" />
+    <Compile Include="DecisionTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Common\RegionDomain.cs" />
+    <Compile Include="Common\SourceOfIncomeDomain.cs" />
+    <Compile Include="ShareholdersDomain.cs" />
+    <Compile Include="TypeOfRisks.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Diagram\CommonGroupDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -28,131 +28,14 @@ Ext.define('RiskManagement.store.Combo.CommitteeTypeStore', {
         me.callParent([Ext.apply({
             storeId: 'Combo.CommitteeTypeStore',
             model: 'RiskManagement.model.Combo.CommitteeTypeModel',
-            data: [
-                {
-                    Id: 717,
-                    Name: 'numquam'
-                },
-                {
-                    Id: 107,
-                    Name: 'dolorum'
-                },
-                {
-                    Id: 926,
-                    Name: 'rerum'
-                },
-                {
-                    Id: 993,
-                    Name: 'nihil'
-                },
-                {
-                    Id: 94,
-                    Name: 'consequatur'
-                },
-                {
-                    Id: 608,
-                    Name: 'dicta'
-                },
-                {
-                    Id: 996,
-                    Name: 'porro'
-                },
-                {
-                    Id: 24,
-                    Name: 'aspernatur'
-                },
-                {
-                    Id: 273,
-                    Name: 'ipsum'
-                },
-                {
-                    Id: 936,
-                    Name: 'aperiam'
-                },
-                {
-                    Id: 181,
-                    Name: 'odit'
-                },
-                {
-                    Id: 399,
-                    Name: 'assumenda'
-                },
-                {
-                    Id: 762,
-                    Name: 'est'
-                },
-                {
-                    Id: 396,
-                    Name: 'dicta'
-                },
-                {
-                    Id: 186,
-                    Name: 'ut'
-                },
-                {
-                    Id: 330,
-                    Name: 'magni'
-                },
-                {
-                    Id: 559,
-                    Name: 'quae'
-                },
-                {
-                    Id: 810,
-                    Name: 'impedit'
-                },
-                {
-                    Id: 147,
-                    Name: 'omnis'
-                },
-                {
-                    Id: 183,
-                    Name: 'saepe'
-                },
-                {
-                    Id: 692,
-                    Name: 'facilis'
-                },
-                {
-                    Id: 320,
-                    Name: 'vitae'
-                },
-                {
-                    Id: 315,
-                    Name: 'ipsum'
-                },
-                {
-                    Id: 878,
-                    Name: 'sed'
-                },
-                {
-                    Id: 463,
-                    Name: 'placeat'
-                },
-                {
-                    Id: 730,
-                    Name: 'sequi'
-                },
-                {
-                    Id: 543,
-                    Name: 'dolor'
-                },
-                {
-                    Id: 77,
-                    Name: 'optio'
-                },
-                {
-                    Id: 560,
-                    Name: 'tempore'
-                },
-                {
-                    Id: 762,
-                    Name: 'quam'
-                }
-            ],
             proxy: {
-                type: 'memory'
+                type: 'rest',
+                url: 'api/common/GetCommitteeType',
+                reader: {
+                        type: 'json'
+                }
             }
+            
         }, cfg)]);
     }
 });

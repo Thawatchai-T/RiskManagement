@@ -13,9 +13,14 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Com.Ktbl.RiskManagement.Web</RootNamespace>
     <AssemblyName>Com.Ktbl.RiskManagement.Web</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>false</UseIISExpress>
+    <TargetFrameworkProfile />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,6 +30,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,8 +39,17 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <IncludeIisSettings>true</IncludeIisSettings>
+    <IncludeAppPool>true</IncludeAppPool>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\RiskManagementSolution\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\..\RiskManagementSolution\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
     <Reference Include="Common.Logging">
       <HintPath>..\..\RiskManagementSolution\packages\Common.Logging.3.0.0\lib\net40\Common.Logging.dll</HintPath>
     </Reference>
@@ -55,10 +70,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\RiskManagementSolution\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Log4Net-MongoAppender">
+    <Reference Include="Log4Net-MongoAppender, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\RiskManagementSolution\packages\Log4Net-Mongo.0.2\lib\net40\Log4Net-MongoAppender.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MongoDB.Bson, Version=1.9.2.235, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\RiskManagementSolution\packages\mongocsharpdriver.1.9.2\lib\net35\MongoDB.Bson.dll</HintPath>
@@ -86,24 +103,54 @@
     <Reference Include="Spring.Web.Mvc4">
       <HintPath>..\..\RiskManagementSolution\packages\Spring.Web.Mvc4.2.0.1\lib\net40\Spring.Web.Mvc4.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Web.DynamicData" />
-    <Reference Include="System.Web.Entity" />
-    <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Abstractions" />
-    <Reference Include="System.Web.Routing" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Web.Services" />
-    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.EnterpriseServices">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\..\RiskManagementSolution\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -114,6 +161,7 @@
     </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\RiskManagementSolution\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
       <Private>True</Private>
@@ -125,9 +173,11 @@
     </Reference>
     <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\RiskManagementSolution\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\RiskManagementSolution\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -149,6 +199,9 @@
       <Private>True</Private>
       <HintPath>..\..\RiskManagementSolution\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\CommonController.cs" />
@@ -159,8 +212,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PageModel.cs" />
+    <Compile Include="Models\ResultModel.cs" />
+    <Compile Include="Models\ShareholdersModel..cs" />
+    <Compile Include="Models\ShareholdersGridModel..cs" />
     <Compile Include="Models\CommonModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\NHHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -169,6 +227,8 @@
     <Content Include="app.js" />
     <Content Include="app\model\Combo\BusinessTypeModel.js" />
     <Content Include="app\model\Combo\CommitteeTypeModel.js" />
+    <Content Include="app\model\Combo\RegistrationTypeModel.js" />
+    <Content Include="app\model\Combo\PoliticianRelationshipModel.js" />
     <Content Include="app\model\Combo\IsicCodeModel.js" />
     <Content Include="app\model\Combo\LocationIncomeModel.js" />
     <Content Include="app\model\Combo\OccupationCatelogyModel.js" />
@@ -181,6 +241,9 @@
     <Content Include="app\model\CurrentlyLivesModel.js" />
     <Content Include="app\model\LoginModel.js" />
     <Content Include="app\model\ShareholdersGridView.js" />
+    <Content Include="app\store\Combo\RegistrationTypeStore.js" />
+    <Content Include="app\store\Combo\PoliticianRelationshipStore.js" />
+    <Content Include="app\store\Combo\ShareholdersGridView.js" />
     <Content Include="app\model\ShareholdersModel.js" />
     <Content Include="app\model\TitleNameModel.js" />
     <Content Include="app\store\Combo\BusinessTypeStore.js" />
@@ -195,6 +258,13 @@
     <Content Include="app\store\Combo\RegionStore.js" />
     <Content Include="app\store\Combo\SourceOfIncomeStore.js" />
     <Content Include="app\store\Combo\TitleNameStore.js" />
+    <Content Include="app\store\ShareholdersStore.js" />
+    <Content Include="app\view\Admin\Main.js" />
+    <Content Include="app\view\Admin\MainViewController.js" />
+    <Content Include="app\view\Admin\MainViewModel.js" />
+    <Content Include="app\view\Admin\Tab\UploadFile.js" />
+    <Content Include="app\view\Admin\Tab\UploadFileViewController.js" />
+    <Content Include="app\view\Admin\Tab\UploadFileViewModel.js" />
     <Content Include="app\view\CorporationlForm.js" />
     <Content Include="app\view\CorporationlFormViewController.js" />
     <Content Include="app\view\CorporationlFormViewModel.js" />
@@ -209,12 +279,17 @@
     <Content Include="app\view\ShareholdersWindowViewModel.js" />
     <Content Include="bootstrap.css" />
     <Content Include="bootstrap.js" />
+    <Content Include="build.xml" />
     <Content Include="Config\Aspects.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Config\controllers.xml" />
+    <Content Include="Config\controllers.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Config\objects.xml" />
-    <Content Include="Config\repository.xml" />
+    <Content Include="Config\repository.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="ext\.sencha\package\Boot.js" />
     <Content Include="ext\.sencha\package\bootstrap-impl.xml" />
     <Content Include="ext\.sencha\package\build-impl.xml" />
@@ -8076,35 +8151,235 @@
     <Content Include="ext\src\window\Window.js" />
     <Content Include="ext\src\ZIndexManager.js" />
     <Content Include="Global.asax" />
-    <Content Include="lib\Common.Logging.Log4Net.dll" />
-    <Content Include="lib\log4net.dll" />
-    <Content Include="lib\MongoDB.Bson.dll" />
-    <Content Include="lib\MongoDB.Driver.dll" />
-    <Content Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\.sencha\package\Boot.js" />
-    <Content Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\.sencha\package\bootstrap-impl.xml" />
-    <Content Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\.sencha\package\build-impl.xml" />
-    <Content Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\.sencha\package\find-cmd-impl.xml" />
-    <Content Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\.sencha\package\init-impl.xml" />
-    <Content Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\.sencha\package\js-impl.xml" />
-    <Content Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\.sencha\package\Microloader.js" />
-    <Content Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\.sencha\package\plugin.xml" />
-    <Content Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\.sencha\package\refresh-impl.xml" />
-    <Content Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\.sencha\package\resources-impl.xml" />
-    <Content Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\.sencha\package\sass-impl.xml" />
-    <Content Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\.sencha\package\slice-impl.xml" />
-    <Content Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\.sencha\package\sub-builds.xml" />
-    <Content Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\build.xml" />
-    <Content Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\docs\package.png" />
-    <Content Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\docs\screenshots\screenshot-1.png" />
-    <Content Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\sass\example\custom.js" />
-    <Content Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\sass\example\render.js" />
-    <Content Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\sass\example\theme.html" />
+    <Content Include="favicon.ico" />
     <Content Include="resources\.arch-internal-preview.css" />
+    <Content Include="resources\images\breadcrumb\default-arrow-open-rtl.png" />
+    <Content Include="resources\images\breadcrumb\default-arrow-open.png" />
+    <Content Include="resources\images\breadcrumb\default-arrow-rtl.png" />
+    <Content Include="resources\images\breadcrumb\default-arrow.png" />
+    <Content Include="resources\images\breadcrumb\default-scroll-left.png" />
+    <Content Include="resources\images\breadcrumb\default-scroll-right.png" />
+    <Content Include="resources\images\breadcrumb\default-split-arrow-open-rtl.png" />
+    <Content Include="resources\images\breadcrumb\default-split-arrow-open.png" />
+    <Content Include="resources\images\breadcrumb\default-split-arrow-over-rtl.png" />
+    <Content Include="resources\images\breadcrumb\default-split-arrow-over.png" />
+    <Content Include="resources\images\breadcrumb\default-split-arrow-rtl.png" />
+    <Content Include="resources\images\breadcrumb\default-split-arrow.png" />
+    <Content Include="resources\images\button\default-large-arrow-rtl.png" />
+    <Content Include="resources\images\button\default-large-arrow.png" />
+    <Content Include="resources\images\button\default-large-s-arrow-b-rtl.png" />
+    <Content Include="resources\images\button\default-large-s-arrow-b.png" />
+    <Content Include="resources\images\button\default-large-s-arrow-rtl.png" />
+    <Content Include="resources\images\button\default-large-s-arrow.png" />
+    <Content Include="resources\images\button\default-medium-arrow-rtl.png" />
+    <Content Include="resources\images\button\default-medium-arrow.png" />
+    <Content Include="resources\images\button\default-medium-s-arrow-b-rtl.png" />
+    <Content Include="resources\images\button\default-medium-s-arrow-b.png" />
+    <Content Include="resources\images\button\default-medium-s-arrow-rtl.png" />
+    <Content Include="resources\images\button\default-medium-s-arrow.png" />
+    <Content Include="resources\images\button\default-small-arrow-rtl.png" />
+    <Content Include="resources\images\button\default-small-arrow.png" />
+    <Content Include="resources\images\button\default-small-s-arrow-b-rtl.png" />
+    <Content Include="resources\images\button\default-small-s-arrow-b.png" />
+    <Content Include="resources\images\button\default-small-s-arrow-rtl.png" />
+    <Content Include="resources\images\button\default-small-s-arrow.png" />
+    <Content Include="resources\images\button\default-toolbar-large-arrow-rtl.png" />
+    <Content Include="resources\images\button\default-toolbar-large-arrow.png" />
+    <Content Include="resources\images\button\default-toolbar-large-s-arrow-b-rtl.png" />
+    <Content Include="resources\images\button\default-toolbar-large-s-arrow-b.png" />
+    <Content Include="resources\images\button\default-toolbar-large-s-arrow-rtl.png" />
+    <Content Include="resources\images\button\default-toolbar-large-s-arrow.png" />
+    <Content Include="resources\images\button\default-toolbar-medium-arrow-rtl.png" />
+    <Content Include="resources\images\button\default-toolbar-medium-arrow.png" />
+    <Content Include="resources\images\button\default-toolbar-medium-s-arrow-b-rtl.png" />
+    <Content Include="resources\images\button\default-toolbar-medium-s-arrow-b.png" />
+    <Content Include="resources\images\button\default-toolbar-medium-s-arrow-rtl.png" />
+    <Content Include="resources\images\button\default-toolbar-medium-s-arrow.png" />
+    <Content Include="resources\images\button\default-toolbar-small-arrow-rtl.png" />
+    <Content Include="resources\images\button\default-toolbar-small-arrow.png" />
+    <Content Include="resources\images\button\default-toolbar-small-s-arrow-b-rtl.png" />
+    <Content Include="resources\images\button\default-toolbar-small-s-arrow-b.png" />
+    <Content Include="resources\images\button\default-toolbar-small-s-arrow-rtl.png" />
+    <Content Include="resources\images\button\default-toolbar-small-s-arrow.png" />
+    <Content Include="resources\images\button\grid-cell-small-arrow-rtl.png" />
+    <Content Include="resources\images\button\grid-cell-small-arrow.png" />
+    <Content Include="resources\images\button\grid-cell-small-s-arrow-b.png" />
+    <Content Include="resources\images\button\grid-cell-small-s-arrow-rtl.png" />
+    <Content Include="resources\images\button\grid-cell-small-s-arrow.png" />
+    <Content Include="resources\images\button\plain-toolbar-large-arrow-rtl.png" />
+    <Content Include="resources\images\button\plain-toolbar-large-arrow.png" />
+    <Content Include="resources\images\button\plain-toolbar-large-s-arrow-b-rtl.png" />
+    <Content Include="resources\images\button\plain-toolbar-large-s-arrow-b.png" />
+    <Content Include="resources\images\button\plain-toolbar-large-s-arrow-rtl.png" />
+    <Content Include="resources\images\button\plain-toolbar-large-s-arrow.png" />
+    <Content Include="resources\images\button\plain-toolbar-medium-arrow-rtl.png" />
+    <Content Include="resources\images\button\plain-toolbar-medium-arrow.png" />
+    <Content Include="resources\images\button\plain-toolbar-medium-s-arrow-b-rtl.png" />
+    <Content Include="resources\images\button\plain-toolbar-medium-s-arrow-b.png" />
+    <Content Include="resources\images\button\plain-toolbar-medium-s-arrow-rtl.png" />
+    <Content Include="resources\images\button\plain-toolbar-medium-s-arrow.png" />
+    <Content Include="resources\images\button\plain-toolbar-small-arrow-rtl.png" />
+    <Content Include="resources\images\button\plain-toolbar-small-arrow.png" />
+    <Content Include="resources\images\button\plain-toolbar-small-s-arrow-b-rtl.png" />
+    <Content Include="resources\images\button\plain-toolbar-small-s-arrow-b.png" />
+    <Content Include="resources\images\button\plain-toolbar-small-s-arrow-rtl.png" />
+    <Content Include="resources\images\button\plain-toolbar-small-s-arrow.png" />
+    <Content Include="resources\images\datepicker\arrow-left.png" />
+    <Content Include="resources\images\datepicker\arrow-right.png" />
+    <Content Include="resources\images\datepicker\month-arrow.png" />
+    <Content Include="resources\images\dd\drop-add.png" />
+    <Content Include="resources\images\dd\drop-no.png" />
+    <Content Include="resources\images\dd\drop-yes.png" />
+    <Content Include="resources\images\editor\tb-sprite.png" />
+    <Content Include="resources\images\fieldset\collapse-tool.png" />
+    <Content Include="resources\images\form\checkbox.png" />
+    <Content Include="resources\images\form\clear-trigger-rtl.png" />
+    <Content Include="resources\images\form\clear-trigger.png" />
+    <Content Include="resources\images\form\date-trigger-rtl.png" />
+    <Content Include="resources\images\form\date-trigger.png" />
+    <Content Include="resources\images\form\exclamation.png" />
+    <Content Include="resources\images\form\radio.png" />
+    <Content Include="resources\images\form\search-trigger-rtl.png" />
+    <Content Include="resources\images\form\search-trigger.png" />
+    <Content Include="resources\images\form\spinner-down-rtl.png" />
+    <Content Include="resources\images\form\spinner-down.png" />
+    <Content Include="resources\images\form\spinner-rtl.png" />
+    <Content Include="resources\images\form\spinner-up-rtl.png" />
+    <Content Include="resources\images\form\spinner-up.png" />
+    <Content Include="resources\images\form\spinner.png" />
+    <Content Include="resources\images\form\tag-field-item-close.png" />
+    <Content Include="resources\images\form\trigger-rtl.png" />
+    <Content Include="resources\images\form\trigger.png" />
+    <Content Include="resources\images\grid\col-move-bottom.png" />
+    <Content Include="resources\images\grid\col-move-top.png" />
+    <Content Include="resources\images\grid\columns.png" />
+    <Content Include="resources\images\grid\dd-insert-arrow-left.png" />
+    <Content Include="resources\images\grid\dd-insert-arrow-right.png" />
+    <Content Include="resources\images\grid\dirty-rtl.png" />
+    <Content Include="resources\images\grid\dirty.png" />
+    <Content Include="resources\images\grid\drop-no.png" />
+    <Content Include="resources\images\grid\drop-yes.png" />
+    <Content Include="resources\images\grid\filters\equals.png" />
+    <Content Include="resources\images\grid\filters\find.png" />
+    <Content Include="resources\images\grid\filters\greater_than.png" />
+    <Content Include="resources\images\grid\filters\less_than.png" />
+    <Content Include="resources\images\grid\group-by.png" />
+    <Content Include="resources\images\grid\group-collapse.png" />
+    <Content Include="resources\images\grid\group-expand.png" />
+    <Content Include="resources\images\grid\hd-pop.png" />
+    <Content Include="resources\images\grid\hmenu-asc.png" />
+    <Content Include="resources\images\grid\hmenu-desc.png" />
+    <Content Include="resources\images\grid\hmenu-lock.png" />
+    <Content Include="resources\images\grid\hmenu-unlock.png" />
+    <Content Include="resources\images\grid\loading.gif" />
+    <Content Include="resources\images\grid\page-first.png" />
+    <Content Include="resources\images\grid\page-last.png" />
+    <Content Include="resources\images\grid\page-next.png" />
+    <Content Include="resources\images\grid\page-prev.png" />
+    <Content Include="resources\images\grid\pick-button.png" />
+    <Content Include="resources\images\grid\refresh.png" />
+    <Content Include="resources\images\grid\sort_asc.png" />
+    <Content Include="resources\images\grid\sort_desc.png" />
+    <Content Include="resources\images\loadmask\loading.gif" />
+    <Content Include="resources\images\magnify.png" />
+    <Content Include="resources\images\menu\default-checked.png" />
+    <Content Include="resources\images\menu\default-group-checked.png" />
+    <Content Include="resources\images\menu\default-menu-parent-left.png" />
+    <Content Include="resources\images\menu\default-menu-parent.png" />
+    <Content Include="resources\images\menu\default-scroll-bottom.png" />
+    <Content Include="resources\images\menu\default-scroll-top.png" />
+    <Content Include="resources\images\menu\default-unchecked.png" />
+    <Content Include="resources\images\shared\icon-error.png" />
+    <Content Include="resources\images\shared\icon-info.png" />
+    <Content Include="resources\images\shared\icon-question.png" />
+    <Content Include="resources\images\shared\icon-warning.png" />
+    <Content Include="resources\images\sizer\e-handle.png" />
+    <Content Include="resources\images\sizer\ne-handle.png" />
+    <Content Include="resources\images\sizer\nw-handle.png" />
+    <Content Include="resources\images\sizer\s-handle.png" />
+    <Content Include="resources\images\sizer\se-handle.png" />
+    <Content Include="resources\images\sizer\sw-handle.png" />
+    <Content Include="resources\images\slider\slider-bg.png" />
+    <Content Include="resources\images\slider\slider-thumb.png" />
+    <Content Include="resources\images\slider\slider-v-bg.png" />
+    <Content Include="resources\images\slider\slider-v-thumb.png" />
+    <Content Include="resources\images\tab-bar\default-plain-scroll-bottom.png" />
+    <Content Include="resources\images\tab-bar\default-plain-scroll-left.png" />
+    <Content Include="resources\images\tab-bar\default-plain-scroll-right.png" />
+    <Content Include="resources\images\tab-bar\default-plain-scroll-top.png" />
+    <Content Include="resources\images\tab-bar\default-scroll-bottom.png" />
+    <Content Include="resources\images\tab-bar\default-scroll-left.png" />
+    <Content Include="resources\images\tab-bar\default-scroll-right.png" />
+    <Content Include="resources\images\tab-bar\default-scroll-top.png" />
+    <Content Include="resources\images\tab\tab-default-close.png" />
+    <Content Include="resources\images\toolbar\default-more-left.png" />
+    <Content Include="resources\images\toolbar\default-more.png" />
+    <Content Include="resources\images\toolbar\default-scroll-bottom.png" />
+    <Content Include="resources\images\toolbar\default-scroll-left.png" />
+    <Content Include="resources\images\toolbar\default-scroll-right.png" />
+    <Content Include="resources\images\toolbar\default-scroll-top.png" />
+    <Content Include="resources\images\toolbar\footer-more-left.png" />
+    <Content Include="resources\images\toolbar\footer-more.png" />
+    <Content Include="resources\images\toolbar\footer-scroll-left.png" />
+    <Content Include="resources\images\toolbar\footer-scroll-right.png" />
+    <Content Include="resources\images\tools\tool-sprites-dark.png" />
+    <Content Include="resources\images\tools\tool-sprites.png" />
+    <Content Include="resources\images\tree\arrows-rtl.png" />
+    <Content Include="resources\images\tree\arrows.png" />
+    <Content Include="resources\images\tree\drop-above.png" />
+    <Content Include="resources\images\tree\drop-add.gif" />
+    <Content Include="resources\images\tree\drop-add.png" />
+    <Content Include="resources\images\tree\drop-append.png" />
+    <Content Include="resources\images\tree\drop-below.png" />
+    <Content Include="resources\images\tree\drop-between.gif" />
+    <Content Include="resources\images\tree\drop-between.png" />
+    <Content Include="resources\images\tree\drop-no.gif" />
+    <Content Include="resources\images\tree\drop-no.png" />
+    <Content Include="resources\images\tree\drop-over.gif" />
+    <Content Include="resources\images\tree\drop-over.png" />
+    <Content Include="resources\images\tree\drop-under.gif" />
+    <Content Include="resources\images\tree\drop-under.png" />
+    <Content Include="resources\images\tree\drop-yes.gif" />
+    <Content Include="resources\images\tree\drop-yes.png" />
+    <Content Include="resources\images\tree\elbow-end-minus-rtl.png" />
+    <Content Include="resources\images\tree\elbow-end-minus.png" />
+    <Content Include="resources\images\tree\elbow-end-plus-rtl.png" />
+    <Content Include="resources\images\tree\elbow-end-plus.png" />
+    <Content Include="resources\images\tree\elbow-end-rtl.png" />
+    <Content Include="resources\images\tree\elbow-end.png" />
+    <Content Include="resources\images\tree\elbow-line-rtl.png" />
+    <Content Include="resources\images\tree\elbow-line.png" />
+    <Content Include="resources\images\tree\elbow-minus-nl-rtl.png" />
+    <Content Include="resources\images\tree\elbow-minus-nl.png" />
+    <Content Include="resources\images\tree\elbow-minus-rtl.png" />
+    <Content Include="resources\images\tree\elbow-minus.png" />
+    <Content Include="resources\images\tree\elbow-plus-nl-rtl.png" />
+    <Content Include="resources\images\tree\elbow-plus-nl.png" />
+    <Content Include="resources\images\tree\elbow-plus-rtl.png" />
+    <Content Include="resources\images\tree\elbow-plus.png" />
+    <Content Include="resources\images\tree\elbow-rtl.png" />
+    <Content Include="resources\images\tree\elbow.png" />
+    <Content Include="resources\images\tree\folder-open-rtl.png" />
+    <Content Include="resources\images\tree\folder-open.png" />
+    <Content Include="resources\images\tree\folder-rtl.png" />
+    <Content Include="resources\images\tree\folder.png" />
+    <Content Include="resources\images\tree\leaf-rtl.png" />
+    <Content Include="resources\images\tree\leaf.png" />
+    <Content Include="resources\images\tree\loading.gif" />
+    <Content Include="resources\images\util\splitter\mini-bottom.png" />
+    <Content Include="resources\images\util\splitter\mini-left.png" />
+    <Content Include="resources\images\util\splitter\mini-right.png" />
+    <Content Include="resources\images\util\splitter\mini-top.png" />
+    <Content Include="resources\images\ux\dashboard\magnify.png" />
+    <Content Include="resources\images\window\toast\fade-blue.png" />
+    <Content Include="resources\images\window\toast\fader.png" />
+    <Content Include="resources\images\window\toast\icon16_error.png" />
+    <Content Include="resources\images\window\toast\icon16_info.png" />
     <Content Include="resources\preview-ext-theme-crisp-04888c25-7d27-4a88-a26d-e30f0ba4f36c.css" />
     <Content Include="resources\preview-ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c.css" />
-    <Content Include="sass\example\custom.js" />
-    <Content Include="sass\example\render.js" />
-    <Content Include="sass\example\theme.html" />
+    <Content Include="resources\RiskManagement-all.css" />
+    <Content Include="resources\RiskManagement-all_01.css" />
+    <Content Include="resources\RiskManagement-all_02.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -8117,18 +8392,16 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.json" />
+    <Content Include="app.json" />
     <None Include="app.json.meta" />
     <None Include="bootstrap.json" />
+    <Content Include="build.settings" />
     <None Include="ext\.sencha\package\build.properties" />
     <None Include="ext\.sencha\package\codegen.json" />
     <None Include="ext\.sencha\package\defaults.properties" />
@@ -8953,27 +9226,23 @@
     <None Include="ext\packages\sencha-soap\Readme.md" />
     <None Include="ext\packages\sencha-soap\test\specs\test.json" />
     <None Include="ext\version.properties" />
-    <None Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\.sencha\package\build.properties" />
-    <None Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\.sencha\package\codegen.json" />
-    <None Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\.sencha\package\defaults.properties" />
-    <None Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\.sencha\package\sencha.cfg" />
-    <None Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\.sencha\package\testing.properties" />
-    <None Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\examples\Readme.md" />
-    <None Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\licenses\Readme.md" />
-    <None Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\overrides\Readme.md" />
-    <None Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\package.json" />
-    <None Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\Readme.md" />
-    <None Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\resources\Readme.md" />
-    <None Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\sass\config.rb" />
-    <None Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\sass\etc\all.scss" />
-    <None Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\sass\etc\Readme.md" />
-    <None Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\sass\Readme.md" />
-    <None Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\sass\src\Component.scss" />
-    <None Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\sass\src\Readme.md" />
-    <None Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\sass\var\Component.scss" />
-    <None Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\sass\var\Readme.md" />
-    <None Include="packages\ext-theme-crisp-3837c98a-0a08-46a7-baff-f692d684983c\src\Readme.md" />
-    <None Include="sass\config.rb" />
+    <Content Include="Log4Net.config" />
+    <None Include="Properties\PublishProfiles\Risk.pubxml" />
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\infrastructure\Com.Ktbl.RiskManagement.Domain\Com.Ktbl.RiskManagement.Domain.csproj">
+      <Project>{29139670-58D9-438F-ACF5-E439FF7E0036}</Project>
+      <Name>Com.Ktbl.RiskManagement.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\infrastructure\Com.Ktbl.RiskManagement.Map\Com.Ktbl.RiskManagement.Map.csproj">
+      <Project>{5b383f96-8977-4108-ad75-5ae899725649}</Project>
+      <Name>Com.Ktbl.RiskManagement.Map</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RiskManagementSolution\Com.Ktbl.RiskManagement.Process\Com.Ktbl.RiskManagement.Process.csproj">
+      <Project>{8DEF7315-7C57-4AAB-A2E7-25B99B8FDEA9}</Project>
+      <Name>Com.Ktbl.RiskManagement.Process</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -8990,10 +9259,10 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>42449</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/RiskManagement</IISUrl>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>61403</DevelopmentServerPort>
+          <DevelopmentServerVPath>/RiskManagement</DevelopmentServerVPath>
+          <IISUrl>http://localhost/RiskManagement1</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -9003,6 +9272,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\..\RiskManagementSolution\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\..\RiskManagementSolution\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

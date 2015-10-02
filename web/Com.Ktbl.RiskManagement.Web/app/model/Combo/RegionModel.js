@@ -23,7 +23,7 @@ Ext.define('RiskManagement.model.Combo.RegionModel', {
     fields: [
         {
             type: 'int',
-            name: 'id'
+            name: 'Id'
         },
         {
             name: 'Name'

@@ -17,7 +17,7 @@ Ext.define('RiskManagement.store.Combo.RegionStore', {
     extend: 'Ext.data.Store',
 
     requires: [
-        'RiskManagement.model.Combo.BusinessTypeModel',
+        'RiskManagement.model.Combo.RegionModel',
         'Ext.data.proxy.Memory'
     ],
 
@@ -26,131 +26,13 @@ Ext.define('RiskManagement.store.Combo.RegionStore', {
         cfg = cfg || {};
         me.callParent([Ext.apply({
             storeId: 'Combo.RegionStore',
-            model: 'RiskManagement.model.Combo.BusinessTypeModel',
-            data: [
-                {
-                    id: 784,
-                    Name: 'voluptatum'
-                },
-                {
-                    id: 874,
-                    Name: 'eos'
-                },
-                {
-                    id: 268,
-                    Name: 'officiis'
-                },
-                {
-                    id: 610,
-                    Name: 'pariatur'
-                },
-                {
-                    id: 528,
-                    Name: 'ipsa'
-                },
-                {
-                    id: 208,
-                    Name: 'eum'
-                },
-                {
-                    id: 952,
-                    Name: 'fugiat'
-                },
-                {
-                    id: 542,
-                    Name: 'minima'
-                },
-                {
-                    id: 233,
-                    Name: 'ut'
-                },
-                {
-                    id: 948,
-                    Name: 'explicabo'
-                },
-                {
-                    id: 147,
-                    Name: 'ipsa'
-                },
-                {
-                    id: 710,
-                    Name: 'et'
-                },
-                {
-                    id: 421,
-                    Name: 'est'
-                },
-                {
-                    id: 487,
-                    Name: 'sed'
-                },
-                {
-                    id: 203,
-                    Name: 'quis'
-                },
-                {
-                    id: 967,
-                    Name: 'commodi'
-                },
-                {
-                    id: 355,
-                    Name: 'et'
-                },
-                {
-                    id: 458,
-                    Name: 'quisquam'
-                },
-                {
-                    id: 336,
-                    Name: 'quaerat'
-                },
-                {
-                    id: 67,
-                    Name: 'voluptates'
-                },
-                {
-                    id: 262,
-                    Name: 'architecto'
-                },
-                {
-                    id: 289,
-                    Name: 'error'
-                },
-                {
-                    id: 337,
-                    Name: 'explicabo'
-                },
-                {
-                    id: 236,
-                    Name: 'consequatur'
-                },
-                {
-                    id: 302,
-                    Name: 'consequatur'
-                },
-                {
-                    id: 889,
-                    Name: 'quod'
-                },
-                {
-                    id: 486,
-                    Name: 'tempore'
-                },
-                {
-                    id: 63,
-                    Name: 'fugit'
-                },
-                {
-                    id: 7,
-                    Name: 'corrupti'
-                },
-                {
-                    id: 676,
-                    Name: 'ut'
-                }
-            ],
+            model: 'RiskManagement.model.Combo.RegionModel',
             proxy: {
-                type: 'memory'
+                type: 'rest',
+                url: 'api/common/GetRegion',
+                reader: {
+                    type: 'json'
+                }
             }
         }, cfg)]);
     }

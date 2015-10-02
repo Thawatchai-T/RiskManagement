@@ -1,30 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <objects xmlns="http://www.springframework.net" default-autowire="constructor">
 
-  <!--<object id="nhHelpersFactory" type="KTBLeasing.FrontLeasing.NHHelpers, KTBLeasing.FrontLeasing">
-    --><!--[20150331] Add by Woody Inject property--><!--
-    <property name="Server" value="221.23.0.70"/>
-    <property name="Port" value="1521"/>
-    <property name="Username" value="FrontLeasing"/>
+  <object id="nhHelpersFactoryNHP" type="Com.Ktbl.RiskManagement.Web.Utility.NHHelpers, Com.Ktbl.RiskManagement.Web">
+    <!--[20150331] Add by Woody Inject property-->
+    <!--NHP-->
+    <property name="Server" value="221.23.4.64"/>
+    <property name="Database" value="NHP_DEV"/>
+    <!--CCI-->
+    <property name="ServerCCI" value="221.23.4.64"/>
+    <property name="DatabaseCCI" value="KTBLCCI"/>
+    <!--Risk-->
+    <property name="ServerRISK" value="127.0.0.1"/>
+    <property name="DatabaseRISK" value="RiskManagement"/>
+    <!-- share-->
+    <property name="Username" value="sa"/>
     <property name="Password" value="ktblitadmin"/>
-    <property name="Instance" value="ktbl"/>
-  </object>-->
-  
-
-  <!--<object id="MyMovieLister" type="Spring.Examples.MovieFinder.MovieLister, Spring.Examples.MovieFinder">
-    --><!-- using setter injection... --><!--
-    <property name="movieFinder" ref="MyMovieFinder"/>
     
-  </object>-->
+  </object>
 
-  <!--<object id="listOfProvince" type="System.Collections.Generic.Dictionary&lt;string,string&gt;"
-        factory-object="nhHelpersFactory"
-        factory-method="CreateSessionFactory" singleton="true"/>-->
+  <!--Com.Ktbl.RiskManagement.Domain.PersonalModel-->
+  <object id="personal-model" type="Com.Ktbl.RiskManagement.Domain.PersonalModel, Com.Ktbl.RiskManagement.Domain">
+  </object>
+  <object id="decisionTable-model" type="Com.Ktbl.RiskManagement.Domain.DecisionTable, Com.Ktbl.RiskManagement.Domain">
+  </object>
 
-  <object type="Com.Ktbl.RiskManagement.MongoDB.Log.MongoDBAppender, Com.Ktbl.RiskManagement.MongoDB" singleton="false" >
-    <property name="ConnectionString"  value="mongodb://localhost" />
-    <property name="ConnectionStringName"  value="mongodb-log4net" />
-    <property name="CollectionName"  value="logs" />
+  <object id="main-processs" type="Com.Ktbl.RiskManagement.Process.MainProcess, Com.Ktbl.RiskManagement.Process">
+    <property name="PoliticianRepository" ref="politicianRelationshipRepository"/>
+    <property name="CCISourceRepository" ref="cciSourceRepository"/>
+    <property name="DecisionTableRepository" ref="decisionTable"/>
+    <property name="CountryRepository" ref="countryRepository"/>
+    <property name="DecisionEntity" ref="decisionTable-model"/>
+    <property name="ShareholderRepository" ref="shareholderRepository"/>
+    <property name="CorporationRepository" ref="corporationRepository"/>
+    
   </object>
   
 </objects>

@@ -28,130 +28,13 @@ Ext.define('RiskManagement.store.Combo.PositionStore', {
         me.callParent([Ext.apply({
             storeId: 'Combo.PositionStore',
             model: 'RiskManagement.model.Combo.PositionModel',
-            data: [
-                {
-                    Id: 717,
-                    Name: 'qui'
-                },
-                {
-                    Id: 115,
-                    Name: 'facilis'
-                },
-                {
-                    Id: 132,
-                    Name: 'earum'
-                },
-                {
-                    Id: 92,
-                    Name: 'recusandae'
-                },
-                {
-                    Id: 328,
-                    Name: 'dolorem'
-                },
-                {
-                    Id: 205,
-                    Name: 'provident'
-                },
-                {
-                    Id: 341,
-                    Name: 'dicta'
-                },
-                {
-                    Id: 901,
-                    Name: 'qui'
-                },
-                {
-                    Id: 533,
-                    Name: 'laborum'
-                },
-                {
-                    Id: 987,
-                    Name: 'deserunt'
-                },
-                {
-                    Id: 538,
-                    Name: 'laborum'
-                },
-                {
-                    Id: 90,
-                    Name: 'quia'
-                },
-                {
-                    Id: 237,
-                    Name: 'vel'
-                },
-                {
-                    Id: 206,
-                    Name: 'autem'
-                },
-                {
-                    Id: 928,
-                    Name: 'rerum'
-                },
-                {
-                    Id: 836,
-                    Name: 'ut'
-                },
-                {
-                    Id: 53,
-                    Name: 'error'
-                },
-                {
-                    Id: 309,
-                    Name: 'officiis'
-                },
-                {
-                    Id: 943,
-                    Name: 'quaerat'
-                },
-                {
-                    Id: 73,
-                    Name: 'aspernatur'
-                },
-                {
-                    Id: 828,
-                    Name: 'error'
-                },
-                {
-                    Id: 721,
-                    Name: 'ab'
-                },
-                {
-                    Id: 221,
-                    Name: 'veritatis'
-                },
-                {
-                    Id: 851,
-                    Name: 'quos'
-                },
-                {
-                    Id: 150,
-                    Name: 'vel'
-                },
-                {
-                    Id: 540,
-                    Name: 'voluptatem'
-                },
-                {
-                    Id: 177,
-                    Name: 'repudiandae'
-                },
-                {
-                    Id: 790,
-                    Name: 'aut'
-                },
-                {
-                    Id: 661,
-                    Name: 'molestiae'
-                },
-                {
-                    Id: 471,
-                    Name: 'ut'
-                }
-            ],
+            autoLoad:true,
             proxy: {
-                type: 'memory'
+                type: 'rest',
+                url: 'api/common/GetPosition',
+                reader: {
+                    type: 'json'
+                }
             }
         }, cfg)]);
     }

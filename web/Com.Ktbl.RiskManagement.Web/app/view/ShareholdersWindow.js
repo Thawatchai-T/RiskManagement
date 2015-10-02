@@ -41,10 +41,10 @@ Ext.define('RiskManagement.view.ShareholdersWindow', {
     },
     autoShow: true,
     height: 768,
-    width: 850,
+    width: 780,
     layout: 'anchor',
     title: 'บริหารจัดการกรรมการและผู้ถือหุ้น',
-
+    bodyPadding: 10,
     dockedItems: [
         {
             xtype: 'form',
@@ -67,10 +67,22 @@ Ext.define('RiskManagement.view.ShareholdersWindow', {
                 {
                     xtype: 'hiddenfield',
                     fieldLabel: 'ID',
-                    name: 'id'
+                    name: 'Id',
+                    value:"0"
                 },
                 {
                     xtype: 'hiddenfield',
+                    name: 'Extension1'
+                },
+                {
+                    xtype: 'hiddenfield',
+                    name: 'Extension2'
+                },
+                {
+                    xtype: 'hiddenfield',
+                    //TODO: DEGUB
+                    //xtype: 'textfield',
+                    //colspan: 2,
                     fieldLabel: 'Corporation Id',
                     name: 'CorporationId'
                 },
@@ -79,15 +91,16 @@ Ext.define('RiskManagement.view.ShareholdersWindow', {
                     fieldLabel: 'ประเภทกรรมการ',
                     name: 'CommitteeType',
                     allowBlank: false,
+                    autoLoadOnValue: true,
                     emptyText: '[ กรุณาเลือก ]',
                     displayField: 'Name',
-                    store: 'Combo.BusinessTypeStore',
-                    valueField: 'id'
+                    store: 'Combo.CommitteeTypeStore',
+                    valueField: 'Id'
                 },
                 {
                     xtype: 'textfield',
                     fieldLabel: 'เลขที่บัตรประชน',
-                    name: 'IdCard',
+                    name: 'CitizenId',
                     allowBlank: false,
                     emptyText: '[ 1234567890123 ]',
                     regex: /^[0-9]{13}$/
@@ -104,11 +117,13 @@ Ext.define('RiskManagement.view.ShareholdersWindow', {
                             margin: '0 5 0 0',
                             fieldLabel: 'คำนำหน้า',
                             hideLabel: true,
-                            name: 'TitleName',
+                            name: 'TitleId',
                             allowBlank: false,
+                            autoLoadOnValue: true,
                             emptyText: '[ กรุณาเลือก ]',
                             displayField: 'Name',
                             store: 'Combo.TitleNameStore',
+
                             valueField: 'Id'
                         },
                         {
@@ -131,80 +146,150 @@ Ext.define('RiskManagement.view.ShareholdersWindow', {
                         }
                     ]
                 },
+                //{
+                //    xtype: 'combobox',
+                //    fieldLabel: 'กลุ่มอาชีพ',
+                //    name: 'OccupationGroup',
+                //    allowBlank: false,
+                //    emptyText: '[ กรุณาเลือก ]',
+                //    displayField: 'Name',
+                //    store: 'Combo.OccupationGroupStore',
+                //    valueField: 'Id'
+                //},
+                //{
+                //    xtype: 'combobox',
+                //    fieldLabel: 'ประเภทอาชีพ',
+                //    name: 'OccupationType',
+                //    allowBlank: false,
+                //    emptyText: '[ กรุณาเลือก ]',
+                //    displayField: 'Name',
+                //    store: 'Combo.OccupationTypeStore',
+                //    valueField: 'id'
+                //},
+                //{
+                //    xtype: 'combobox',
+                //    fieldLabel: 'ตำแหน่ง',
+                //    name: 'Position',
+                //    allowBlank: false,
+                //    emptyText: '[ กรุณาเลือก ]',
+                //    displayField: 'Name',
+                //    store: 'Combo.PositionStore',
+                //    valueField: 'Id'
+                //},
+                {
+                    xtype: 'combobox',
+                    reference: 'catelogyField',
+                    fieldLabel: 'หมวดอาชีพ',
+                    name: 'OccupationCategoryId',
+                    emptyText: '[ เลือกหมวดอาชีพ ]',
+                    displayField: 'Name',
+                    editable: false,
+                    store: 'Combo.OccupationCatelogyStore',
+                    valueField: 'Id',
+                    autoLoadOnValue: true,
+                    listeners: {
+                        change: 'onCatelogyChange'
+                    }
+                },
                 {
                     xtype: 'combobox',
                     fieldLabel: 'กลุ่มอาชีพ',
-                    name: 'OccupationGroup',
-                    allowBlank: false,
-                    emptyText: '[ กรุณาเลือก ]',
+                    reference: 'groupField',
+                    name: 'OccupationGroupId',
+                    emptyText: '[ เลือกกลุ่มอาชีพ ]',
                     displayField: 'Name',
                     store: 'Combo.OccupationGroupStore',
-                    valueField: 'Id'
+                    valueField: 'Id',
+                    editable: false,
+                    autoLoadOnValue: true,
+                    listeners: {
+                        change: 'onGroupChange'
+                    }
                 },
                 {
                     xtype: 'combobox',
                     fieldLabel: 'ประเภทอาชีพ',
-                    name: 'OccupationType',
-                    allowBlank: false,
-                    emptyText: '[ กรุณาเลือก ]',
+                    reference: 'typeField',
+                    name: 'OccupationTypeId',
+                    emptyText: '[ เลือกประเภทอาชีพ ]',
                     displayField: 'Name',
                     store: 'Combo.OccupationTypeStore',
-                    valueField: 'id'
+                    valueField: 'Id',
+                    editable: false,
+                    autoLoadOnValue: true,
+                    listeners: {
+                        change: 'onTypeChange'
+                    }
                 },
                 {
                     xtype: 'combobox',
                     fieldLabel: 'ตำแหน่ง',
-                    name: 'Position',
-                    allowBlank: false,
-                    emptyText: '[ กรุณาเลือก ]',
+                    reference: 'positionField',
+                    name: 'PositionId',
+                    emptyText: '[ เลือกตำแหน่ง ]',
                     displayField: 'Name',
                     store: 'Combo.PositionStore',
-                    valueField: 'Id'
+                    valueField: 'Id',
+                    editable: false
                 },
                 {
                     xtype: 'combobox',
                     fieldLabel: 'ประเภทธุรกิจ',
-                    name: 'BusinessType',
+                    name: 'BusinessId',
                     allowBlank: false,
+                    autoLoadOnValue: true,
                     emptyText: '[ กรุณาเลือก ]',
                     displayField: 'Name',
                     store: 'Combo.BusinessTypeStore',
-                    valueField: 'id'
+                    valueField: 'Id'
                 },
                 {
                     xtype: 'combobox',
                     fieldLabel: 'แหล่งที่มาของรายได้',
                     name: 'SourceOfIncome',
                     allowBlank: false,
+                    autoLoadOnValue: true,
                     emptyText: '[ กรุณาเลือก ]',
                     displayField: 'Name',
                     store: 'Combo.SourceOfIncomeStore',
-                    valueField: 'id'
+                    valueField: 'Id'
                 },
                 {
                     xtype: 'combobox',
                     fieldLabel: 'แหล่งที่ตั้งของรายได้',
-                    name: 'LocationIncome',
+                    name: 'LocationOfIncome',
                     allowBlank: false,
+                    autoLoadOnValue: true,
                     emptyText: '[ กรุณาเลือก ]',
                     displayField: 'Name',
-                    store: 'Combo.LocationIncomeStore',
+                    store: 'Combo.RegionStore',
                     valueField: 'Id'
                 },
                 {
                     xtype: 'combobox',
-                    fieldLabel: 'ประเทศปัจจับันที่พักอาศัย',
-                    name: 'CurrentlyLives',
+                    fieldLabel: 'ประเทศปัจจุบันที่พักอาศัย',
+                    name: 'LiveInCountry',
                     allowBlank: false,
+                    autoLoadOnValue: true,
                     emptyText: '[ กรุณาเลือก ]',
                     displayField: 'Name',
-                    store: 'Combo.CurrentlyLivesStore',
+                    store: 'Combo.RegionStore',
                     valueField: 'Id'
                 },
+                //{
+                //    xtype: 'checkboxfield',
+                //    fieldLabel: 'มีความสัมพันธ์กับนักการเมือง',
+                //    name: 'IsPolitician'
+                //},
                 {
-                    xtype: 'checkboxfield',
-                    fieldLabel: 'มีความสัมพันธ์กับนักการเมือง',
-                    name: 'IsPolitician'
+                    xtype: 'combobox',
+                    colspan: 2,
+                    fieldLabel: 'ความสัมธ์กับนักการเมือง',
+                    name: 'PoliticianRelationship',
+                    emptyText: '[ ความสัมธ์กับนักการเมือง ]',
+                    displayField: 'Name',
+                    store: 'Combo.PoliticianRelationshipStore',
+                    valueField: 'Id'
                 },
                 {
                     xtype: 'filefield',
@@ -212,18 +297,26 @@ Ext.define('RiskManagement.view.ShareholdersWindow', {
                     width: '100%',
                     fieldLabel: 'หนังสือให้ความยินยอมเปิดเผยข้อมูล',
                     labelWidth: 250,
-                    name: 'File1',
+                    name: 'PathFile',
                     allowBlank: false,
-                    emptyText: '[ File ]'
+                    emptyText: '[ File ]',
+                    change: function (comp, value, eOpts) {
+                        console.log(value);
+                        console.log(comp.up('Extension2'))
+                    }
                 },
                 {
                     xtype: 'filefield',
                     colspan: 2,
                     width: '100%',
                     fieldLabel: 'เอกสารแนบ KYC/CDD',
-                    name: 'File2',
+                    name: 'PathFile1',
                     allowBlank: false,
-                    emptyText: '[ File ]'
+                    emptyText: '[ File ]',
+                    change: function (comp, value, eOpts) {
+                        console.log(value);
+                        console.log(comp.up('Extension2'))
+                    }
                 },
                 {
                     xtype: 'checkboxfield',
@@ -255,6 +348,7 @@ Ext.define('RiskManagement.view.ShareholdersWindow', {
                             xtype: 'button',
                             flex: 1,
                             text: 'กรรมการผู้ถือหุ้น',
+                            hidden: true,
                             tooltip: 'บันทึกข้อมูลกรรมการและผู้ถือหุ้น'
                         },
                         {
@@ -275,8 +369,9 @@ Ext.define('RiskManagement.view.ShareholdersWindow', {
     items: [
         {
             xtype: 'gridpanel',
-            height: 500,
+            height: 350,
             scrollable: true,
+            reference: 'grid',
             bind: {
                 store: '{shareholdersGridViews}'
             },
@@ -290,12 +385,18 @@ Ext.define('RiskManagement.view.ShareholdersWindow', {
                         {
                             xtype: 'button',
                             width: 75,
-                            text: 'แก้ไข'
+                            text: 'แก้ไข',
+                            listeners: {
+                                click: 'onEditClick'
+                            }
                         },
                         {
                             xtype: 'button',
                             width: 75,
-                            text: 'ลบ'
+                            text: 'ลบ',
+                            listeners: {
+                                click: 'onDeleteClick'
+                            }
                         }
                     ]
                 },
@@ -318,28 +419,28 @@ Ext.define('RiskManagement.view.ShareholdersWindow', {
                 },
                 {
                     xtype: 'gridcolumn',
-                    dataIndex: 'OccupationTypeName',
+                    dataIndex: 'CitizenId',
                     text: 'เลขที่บัตรประชน'
                 },
                 {
                     xtype: 'gridcolumn',
-                    dataIndex: 'BusinessType',
+                    dataIndex: 'BusinessName',
                     text: 'ประเภทธุรกิจ'
                 },
                 {
                     xtype: 'gridcolumn',
-                    dataIndex: 'BusinessType',
+                    dataIndex: 'OccupationTypeName',
                     text: 'ประเภทอาชีพ',
                     flex: -1
                 },
                 {
                     xtype: 'gridcolumn',
-                    dataIndex: 'LocationIncomeName',
+                    dataIndex: 'SourceOfIncomeName',
                     text: 'ที่ตั้งแหล่งที่มาของรายได้'
                 },
                 {
                     xtype: 'gridcolumn',
-                    dataIndex: 'IsPolitician',
+                    dataIndex: 'PoliticianRelationshipName',
                     text: 'ความสัมพันธ์กับนัการเมือง'
                 }
             ],
@@ -350,7 +451,10 @@ Ext.define('RiskManagement.view.ShareholdersWindow', {
                 {
                     ptype: 'bufferedrenderer'
                 }
-            ]
+            ],
+            listeners: {
+                itemdblclick: 'onGridItemDblClick'
+            }
         }
     ]
 

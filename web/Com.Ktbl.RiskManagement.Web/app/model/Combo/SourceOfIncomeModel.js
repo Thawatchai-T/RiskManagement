@@ -24,7 +24,7 @@ Ext.define('RiskManagement.model.Combo.SourceOfIncomeModel', {
     fields: [
         {
             type: 'int',
-            name: 'id'
+            name: 'Id'
         },
         {
             name: 'Name'

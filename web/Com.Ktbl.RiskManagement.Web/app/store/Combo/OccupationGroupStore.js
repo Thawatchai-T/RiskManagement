@@ -27,131 +27,14 @@ Ext.define('RiskManagement.store.Combo.OccupationGroupStore', {
         cfg = cfg || {};
         me.callParent([Ext.apply({
             storeId: 'Combo.OccupationGroupStore',
+           // autoLoad: true,
             model: 'RiskManagement.model.Combo.OccupationGroupModel',
-            data: [
-                {
-                    Id: 25,
-                    Name: 'vel'
-                },
-                {
-                    Id: 459,
-                    Name: 'error'
-                },
-                {
-                    Id: 607,
-                    Name: 'illum'
-                },
-                {
-                    Id: 324,
-                    Name: 'animi'
-                },
-                {
-                    Id: 923,
-                    Name: 'dolores'
-                },
-                {
-                    Id: 940,
-                    Name: 'dolor'
-                },
-                {
-                    Id: 382,
-                    Name: 'molestiae'
-                },
-                {
-                    Id: 439,
-                    Name: 'est'
-                },
-                {
-                    Id: 97,
-                    Name: 'nobis'
-                },
-                {
-                    Id: 273,
-                    Name: 'beatae'
-                },
-                {
-                    Id: 349,
-                    Name: 'velit'
-                },
-                {
-                    Id: 157,
-                    Name: 'consectetur'
-                },
-                {
-                    Id: 811,
-                    Name: 'aspernatur'
-                },
-                {
-                    Id: 602,
-                    Name: 'impedit'
-                },
-                {
-                    Id: 790,
-                    Name: 'qui'
-                },
-                {
-                    Id: 750,
-                    Name: 'sed'
-                },
-                {
-                    Id: 89,
-                    Name: 'laudantium'
-                },
-                {
-                    Id: 90,
-                    Name: 'et'
-                },
-                {
-                    Id: 966,
-                    Name: 'non'
-                },
-                {
-                    Id: 134,
-                    Name: 'aut'
-                },
-                {
-                    Id: 309,
-                    Name: 'architecto'
-                },
-                {
-                    Id: 324,
-                    Name: 'quia'
-                },
-                {
-                    Id: 582,
-                    Name: 'neque'
-                },
-                {
-                    Id: 548,
-                    Name: 'quia'
-                },
-                {
-                    Id: 586,
-                    Name: 'vero'
-                },
-                {
-                    Id: 497,
-                    Name: 'in'
-                },
-                {
-                    Id: 135,
-                    Name: 'repellendus'
-                },
-                {
-                    Id: 658,
-                    Name: 'officiis'
-                },
-                {
-                    Id: 365,
-                    Name: 'qui'
-                },
-                {
-                    Id: 308,
-                    Name: 'facilis'
-                }
-            ],
             proxy: {
-                type: 'memory'
+                type: 'rest',
+                url: 'api/common/GetOccupation?type=group',
+                reader: {
+                    type: 'json'
+                }
             }
         }, cfg)]);
     }

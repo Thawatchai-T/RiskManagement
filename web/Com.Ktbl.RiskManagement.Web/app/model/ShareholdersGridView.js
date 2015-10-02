@@ -23,10 +23,14 @@ Ext.define('RiskManagement.model.ShareholdersGridView', {
     fields: [
         {
             type: 'int',
-            name: 'Id'
+            name: 'id',
+            mapping: 'Id'
         },
         {
             name: 'CorporationId'
+        },
+        {
+            name: 'CitizenId'
         },
         {
             name: 'CommitteeType'
@@ -35,22 +39,25 @@ Ext.define('RiskManagement.model.ShareholdersGridView', {
             name: 'CommitteeTypeName'
         },
         {
-            name: 'IdCard'
+            name: 'BusinessId'
+        },
+        {
+            name: 'BusinessName'
+        },
+        {
+            name: 'SourceOfIncome'
+        },
+        {
+            name: 'SourceOfIncomeName'
+        },
+        {
+            name: 'PoliticianRelationship'
+        },
+        {
+            name: 'PoliticianRelationshipName'
         },
         {
             name: 'OccupationTypeName'
-        },
-        {
-            name: 'BusinessType'
-        },
-        {
-            name: 'LocationIncome'
-        },
-        {
-            name: 'LocationIncomeName'
-        },
-        {
-            name: 'IsPolitician'
         }
     ]
 });

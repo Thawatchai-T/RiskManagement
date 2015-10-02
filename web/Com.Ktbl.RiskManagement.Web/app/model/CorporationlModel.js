@@ -62,7 +62,7 @@ Ext.define('RiskManagement.model.CorporationlModel', {
             name: 'OccupationType'
         },
         {
-            name: 'Positon'
+            name: 'Position'
         },
         {
             name: 'BusinessType'

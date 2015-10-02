@@ -27,41 +27,41 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
         },
         _config = {
             /*
-            * @cfg {Boolean} [disableCaching=true]
-            * If `true` current timestamp is added to script URL's to prevent caching.
-            * In debug builds, adding a "cache" or "disableCacheBuster" query parameter
-            * to the page's URL will set this to `false`.
-            */
+             * @cfg {Boolean} [disableCaching=true]
+             * If `true` current timestamp is added to script URL's to prevent caching.
+             * In debug builds, adding a "cache" or "disableCacheBuster" query parameter
+             * to the page's URL will set this to `false`.
+             */
             disableCaching: (/[?&](?:cache|disableCacheBuster)\b/i.test(location.search) ||
                 !(/http[s]?\:/i.test(location.href)) ||
                 /(^|[ ;])ext-cache=1/.test(doc.cookie)) ? false :
                 true,
 
             /*
-            * @cfg {String} [disableCachingParam="_dc"]
-            * The query parameter name for the cache buster's timestamp.
-            */
+             * @cfg {String} [disableCachingParam="_dc"]
+             * The query parameter name for the cache buster's timestamp.
+             */
             disableCachingParam: '_dc',
 
             /*
-            * @cfg {Boolean} loadDelay
-            * Millisecond delay between asynchronous script injection (prevents stack
-            * overflow on some user agents) 'false' disables delay but potentially
-            * increases stack load.
-            */
+             * @cfg {Boolean} loadDelay
+             * Millisecond delay between asynchronous script injection (prevents stack
+             * overflow on some user agents) 'false' disables delay but potentially
+             * increases stack load.
+             */
             loadDelay: false,
 
             /*
-            * @cfg {Boolean} preserveScripts
-            * `false` to remove asynchronously loaded scripts, `true` to retain script
-            * element for browser debugger compatibility and improved load performance.
-            */
+             * @cfg {Boolean} preserveScripts
+             * `false` to remove asynchronously loaded scripts, `true` to retain script
+             * element for browser debugger compatibility and improved load performance.
+             */
             preserveScripts: true,
 
             /*
-            * @cfg {String} charset
-            * Optional charset to specify encoding of dynamic content.
-            */
+             * @cfg {String} charset
+             * Optional charset to specify encoding of dynamic content.
+             */
             charset: undefined
         },
 
@@ -75,6 +75,9 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
         },
         _tags = (Ext.platformTags = {}),
 
+        _debug = function (message) {
+            //console.log(message);
+        },
         _apply = function (object, config, defaults) {
             if (defaults) {
                 _apply(object, defaults);
@@ -87,11 +90,11 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
             return object;
         },
     /*
-    * The Boot loader class manages Request objects that contain one or 
-    * more individual urls that need to be loaded.  Requests can be performed
-    * synchronously or asynchronously, but will always evaluate urls in the
-    * order specified on the request object.
-    */
+     * The Boot loader class manages Request objects that contain one or 
+     * more individual urls that need to be loaded.  Requests can be performed
+     * synchronously or asynchronously, but will always evaluate urls in the
+     * order specified on the request object.
+     */
         Boot = {
             loading: 0,
             loaded: 0,
@@ -102,21 +105,21 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
             // or an array of callbacks to call once it loads.
             scripts: {
                 /*
-                Entry objects 
+                 Entry objects 
 
-                'http://foo.com/bar/baz/Thing.js': {
-                done: true,
-                el: scriptEl || linkEl,
-                preserve: true,
-                requests: [ request1, ... ]
-                }
-                */
+                 'http://foo.com/bar/baz/Thing.js': {
+                 done: true,
+                 el: scriptEl || linkEl,
+                 preserve: true,
+                 requests: [ request1, ... ]
+                 }
+                 */
             },
 
             /*
-            * contains the current script name being loaded
-            * (loadSync or sequential load only)
-            */
+             * contains the current script name being loaded
+             * (loadSync or sequential load only)
+             */
             currentFile: null,
             suspendedQueue: [],
             currentRequest: null,
@@ -126,13 +129,14 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
             syncMode: false,
 
             /*
-            * simple helper method for debugging
-            */
+             * simple helper method for debugging
+             */
+            debug: _debug,
 
             /*
-            * enables / disables loading scripts via script / link elements rather
-            * than using ajax / eval
-            */
+             * enables / disables loading scripts via script / link elements rather
+             * than using ajax / eval
+             */
             useElements: true,
 
             listeners: [],
@@ -142,10 +146,10 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
             Entry: Entry,
 
             /**
-            * The defult function that detects various platforms and sets tags
-            * in the platform map accrodingly.  Examples are iOS, android, tablet, etc.
-            * @param tags the set of tags to populate
-            */
+             * The defult function that detects various platforms and sets tags
+             * in the platform map accrodingly.  Examples are iOS, android, tablet, etc.
+             * @param tags the set of tags to populate
+             */
             detectPlatformTags: function () {
                 var ua = navigator.userAgent,
                     isMobile = _tags.isMobile = /Mobile(\/|\s)/.test(ua),
@@ -169,7 +173,7 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
                         'Safari',
                         'Windows Phone'
                     ],
-                    isEventSupported = function (name, tag) {
+                    isEventSupported = function(name, tag) {
                         if (tag === undefined) {
                             tag = window;
                         }
@@ -216,14 +220,14 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
                     );
 
                 touchSupported =
-                // if the browser has touch events we can be reasonably sure the device has
-                // a touch screen
+                    // if the browser has touch events we can be reasonably sure the device has
+                    // a touch screen
                     isEventSupported('touchend') ||
-                // browsers that use pointer event have maxTouchPoints > 0 if the
-                // device supports touch input
-                // http://www.w3.org/TR/pointerevents/#widl-Navigator-maxTouchPoints
+                    // browsers that use pointer event have maxTouchPoints > 0 if the
+                    // device supports touch input
+                    // http://www.w3.org/TR/pointerevents/#widl-Navigator-maxTouchPoints
                     navigator.maxTouchPoints ||
-                // IE10 uses a vendor-prefixed maxTouchPoints property
+                    // IE10 uses a vendor-prefixed maxTouchPoints property
                     navigator.msMaxTouchPoints;
 
                 isDesktop = !isPhone && !isTablet;
@@ -248,18 +252,18 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
             },
 
             /**
-            * Extracts user supplied platform tags from the "platformTags" query parameter
-            * of the form:
-            *
-            * ?platformTags=name:state,name:state,...
-            *
-            * (each tag defaults to true when state is unspecified)
-            *
-            * Example:
-            * ?platformTags=isTablet,isPhone:false,isDesktop:0,iOS:1,Safari:true, ...
-            *
-            * @returns {Object} the platform tags supplied by the query string
-            */
+             * Extracts user supplied platform tags from the "platformTags" query parameter
+             * of the form:
+             *
+             * ?platformTags=name:state,name:state,...
+             *
+             * (each tag defaults to true when state is unspecified)
+             *
+             * Example:
+             * ?platformTags=isTablet,isPhone:false,isDesktop:0,iOS:1,Safari:true, ...
+             *
+             * @returns {Object} the platform tags supplied by the query string
+             */
             loadPlatformsParam: function () {
                 // Check if the ?platform parameter is set in the URL
                 var paramsString = window.location.search.substr(1),
@@ -331,6 +335,7 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
                     }
 
                     if (!Boot.scripts[key = Boot.canonicalUrl(src)]) {
+                        _debug("creating entry " + key + " in Boot.init");
                         entry = new Entry({
                             key: key,
                             url: src,
@@ -354,7 +359,7 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
                     window.location.protocol +
                     "//" +
                     window.location.hostnaBoot +
-                    (window.location.port ? ':' + window.location.port : '');
+                    (window.location.port ? ':' + window.location.port: '');
                 Boot.origin = origin;
 
                 Boot.detectPlatformTags();
@@ -362,19 +367,19 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
             },
 
             /*
-            * This method returns a canonical URL for the given URL.
-            *
-            * For example, the following all produce the same canonical URL (which is the
-            * last one):
-            *
-            *      http://foo.com/bar/baz/zoo/derp/../../goo/Thing.js?_dc=12345
-            *      http://foo.com/bar/baz/zoo/derp/../../goo/Thing.js
-            *      http://foo.com/bar/baz/zoo/derp/../jazz/../../goo/Thing.js
-            *      http://foo.com/bar/baz/zoo/../goo/Thing.js
-            *      http://foo.com/bar/baz/goo/Thing.js
-            *
-            * @private
-            */
+             * This method returns a canonical URL for the given URL.
+             *
+             * For example, the following all produce the same canonical URL (which is the
+             * last one):
+             *
+             *      http://foo.com/bar/baz/zoo/derp/../../goo/Thing.js?_dc=12345
+             *      http://foo.com/bar/baz/zoo/derp/../../goo/Thing.js
+             *      http://foo.com/bar/baz/zoo/derp/../jazz/../../goo/Thing.js
+             *      http://foo.com/bar/baz/zoo/../goo/Thing.js
+             *      http://foo.com/bar/baz/goo/Thing.js
+             *
+             * @private
+             */
             canonicalUrl: function (url) {
                 // @TODO - see if we need this fallback logic
                 // http://stackoverflow.com/questions/470832/getting-an-absolute-url-from-a-relative-one-ie6-issue
@@ -401,19 +406,19 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
             },
 
             /*
-            * Get the config value corresponding to the specified name. If no name is given, will return the config object
-            * @param {String} name The config property name
-            * @return {Object}
-            */
+             * Get the config value corresponding to the specified name. If no name is given, will return the config object
+             * @param {String} name The config property name
+             * @return {Object}
+             */
             getConfig: function (name) {
                 return name ? Boot.config[name] : Boot.config;
             },
 
             /*
-            * Set the configuration.
-            * @param {Object} config The config object to override the default values.
-            * @return {Ext.Boot} this
-            */
+             * Set the configuration.
+             * @param {Object} config The config object to override the default values.
+             * @return {Ext.Boot} this
+             */
             setConfig: function (name, value) {
                 if (typeof name === 'string') {
                     Boot.config[name] = value;
@@ -447,11 +452,12 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
                 return entry;
             },
 
-            processRequest: function (request, sync) {
+            processRequest: function(request, sync) {
                 request.loadEntries(sync);
             },
 
             load: function (request) {
+                _debug("Boot.load called");
                 var request = new Request(request);
 
                 if (request.sync || Boot.syncMode) {
@@ -461,6 +467,7 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
                 // If there is a request in progress, we must
                 // queue this new request to be fired  when the current request completes.
                 if (Boot.currentRequest) {
+                    _debug("current active request, suspending this request");
                     // trigger assignment of entries now to ensure that overlapping
                     // entries with currently running requests will synchronize state
                     // with this pending one as they complete
@@ -474,6 +481,7 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
             },
 
             loadSync: function (request) {
+                _debug("Boot.loadSync called");
                 var request = new Request(request);
 
                 Boot.syncMode++;
@@ -482,26 +490,27 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
                 return Boot;
             },
 
-            loadBasePrefix: function (request) {
+            loadBasePrefix: function(request) {
                 request = new Request(request);
                 request.prependBaseUrl = true;
                 return Boot.load(request);
             },
 
-            loadSyncBasePrefix: function (request) {
+            loadSyncBasePrefix: function(request) {
                 request = new Request(request);
                 request.prependBaseUrl = true;
                 return Boot.loadSync(request);
             },
 
-            requestComplete: function (request) {
+            requestComplete: function(request) {
                 var next;
 
                 if (Boot.currentRequest === request) {
                     Boot.currentRequest = null;
-                    while (Boot.suspendedQueue.length > 0) {
+                    while(Boot.suspendedQueue.length > 0) {
                         next = Boot.suspendedQueue.shift();
-                        if (!next.done) {
+                        if(!next.done) {
+                            _debug("resuming suspended request");
                             Boot.load(next);
                             break;
                         }
@@ -532,18 +541,18 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
             },
 
             /*
-            * this is a helper function used by Ext.Loader to flush out
-            * 'uses' arrays for classes
-            */
+             * this is a helper function used by Ext.Loader to flush out
+             * 'uses' arrays for classes
+             */
             getPathsFromIndexes: function (indexMap, loadOrder) {
                 return Request.prototype.getPathsFromIndexes(indexMap, loadOrder);
             },
 
-            createLoadOrderMap: function (loadOrder) {
+            createLoadOrderMap: function(loadOrder) {
                 return Request.prototype.createLoadOrderMap(loadOrder);
             },
 
-            fetch: function (url, complete, scope, async) {
+            fetch: function(url, complete, scope, async) {
                 async = (async === undefined) ? !!complete : async;
 
                 var xhr = new XMLHttpRequest(),
@@ -571,8 +580,8 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
                 }
 
                 try {
+                    _debug("fetching " + url + " " + (async ? "async" : "sync"));
                     xhr.open('GET', url, async);
-                    console.log(url);
                     xhr.send(null);
                 } catch (err) {
                     exception = err;
@@ -587,24 +596,24 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
                 return result;
             },
 
-            notifyAll: function (entry) {
+            notifyAll: function(entry) {
                 entry.notifyRequests();
             }
         };
 
     /*
-    * The request class encapsulates a series of Entry objects
-    * and provides notification around the completion of all Entries
-    * in this request.
-    */
+     * The request class encapsulates a series of Entry objects
+     * and provides notification around the completion of all Entries
+     * in this request.
+     */
     function Request(cfg) {
-        if (cfg.$isRequest) {
+        if(cfg.$isRequest) {
             return cfg;
         }
 
-        var cfg = cfg.url ? cfg : { url: cfg },
+        var cfg = cfg.url ? cfg : {url: cfg},
             url = cfg.url,
-            urls = url.charAt ? [url] : url,
+            urls = url.charAt ? [ url ] : url,
             charset = cfg.charset || Boot.config.charset;
 
         _apply(cfg, {
@@ -617,10 +626,10 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
         $isRequest: true,
 
         /*
-        * @private
-        * @param manifest
-        * @returns {*}
-        */
+         * @private
+         * @param manifest
+         * @returns {*}
+         */
         createLoadOrderMap: function (loadOrder) {
             var len = loadOrder.length,
                 loadOrderMap = {},
@@ -635,11 +644,11 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
         },
 
         /*
-        * @private
-        * @param index
-        * @param indexMap
-        * @returns {{}}
-        */
+         * @private
+         * @param index
+         * @param indexMap
+         * @returns {{}}
+         */
         getLoadIndexes: function (index, indexMap, loadOrder, includeUses, skipLoaded) {
             var item = loadOrder[index],
                 len, i, reqs, entry, stop, added, idx, ridx, url;
@@ -807,8 +816,8 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
             return this.urls;
         },
 
-        prepareUrl: function (url) {
-            if (this.prependBaseUrl) {
+        prepareUrl: function(url) {
+            if(this.prependBaseUrl) {
                 return Boot.baseUrl + url;
             }
             return url;
@@ -835,30 +844,30 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
             return entries;
         },
 
-        loadEntries: function (sync) {
+        loadEntries: function(sync) {
             var me = this,
                 entries = me.getEntries(),
                 len = entries.length,
                 start = me.loadStart || 0,
                 continueLoad, entry, i;
 
-            if (sync !== undefined) {
+            if(sync !== undefined) {
                 me.sync = sync;
             }
 
             me.loaded = me.loaded || 0;
             me.loading = me.loading || len;
 
-            for (i = start; i < len; i++) {
+            for(i = start; i < len; i++) {
                 entry = entries[i];
-                if (!entry.loaded) {
+                if(!entry.loaded) {
                     continueLoad = entries[i].load(me.sync);
                 } else {
                     continueLoad = true;
                 }
-                if (!continueLoad) {
+                if(!continueLoad) {
                     me.loadStart = i;
-                    entry.onDone(function () {
+                    entry.onDone(function(){
                         me.loadEntries(sync);
                     });
                     break;
@@ -920,21 +929,22 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
             }
         },
 
-        onDone: function (listener) {
+        onDone: function(listener) {
             var me = this,
                 listeners = me.listeners || (me.listeners = []);
-            if (me.done) {
+            if(me.done) {
                 listener(me);
             } else {
                 listeners.push(listener);
             }
         },
 
-        fireListeners: function () {
+        fireListeners: function() {
             var listeners = this.listeners,
                 listener;
-            if (listeners) {
-                while ((listener = listeners.shift())) {
+            if(listeners) {
+                _debug("firing request listeners");
+                while((listener = listeners.shift())) {
                     listener(this);
                 }
             }
@@ -942,15 +952,16 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
     };
 
     /*
-    * The Entry class is a token to manage the load and evaluation
-    * state of a particular url.  It is used to notify all Requests
-    * interested in this url that the content is available.
-    */
+     * The Entry class is a token to manage the load and evaluation
+     * state of a particular url.  It is used to notify all Requests
+     * interested in this url that the content is available.
+     */
     function Entry(cfg) {
-        if (cfg.$isEntry) {
+        if(cfg.$isEntry) {
             return cfg;
         }
 
+        _debug("creating entry for " + cfg.url);
 
         var charset = cfg.charset || Boot.config.charset,
             manifest = Ext.manifest,
@@ -958,17 +969,17 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
             cache = (cfg.cache !== undefined) ? cfg.cache : (loader && loader.cache),
             buster, busterParam;
 
-        if (cache === undefined) {
+        if(cache === undefined) {
             cache = !Boot.config.disableCaching;
         }
 
-        if (cache === false) {
+        if(cache === false) {
             buster = +new Date();
-        } else if (cache !== true) {
+        } else if(cache !== true) {
             buster = cache;
         }
 
-        if (buster) {
+        if(buster) {
             busterParam = (loader && loader.cacheParam) || Boot.config.disableCachingParam;
             buster = busterParam + "=" + buster;
         };
@@ -986,9 +997,10 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
         evaluated: false,
         loaded: false,
 
-        isCrossDomain: function () {
+        isCrossDomain: function() {
             var me = this;
-            if (me.crossDomain === undefined) {
+            if(me.crossDomain === undefined) {
+                _debug("checking " + me.getLoadUrl() + " for prefix " + Boot.origin);
                 me.crossDomain = (me.getLoadUrl().indexOf(Boot.origin) !== 0);
             }
             return me.crossDomain;
@@ -1006,14 +1018,15 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
             var me = this,
                 el = me.el;
             if (!el) {
+                _debug("creating element for " + me.url);
                 if (me.isCss()) {
                     tag = tag || "link";
                     el = doc.createElement(tag);
-                    if (tag == "link") {
+                    if(tag == "link") {
                         el.rel = 'stylesheet';
                         me.prop = 'href';
                     } else {
-                        me.prop = "textContent";
+                        me.prop="textContent";
                     }
                     el.type = "text/css";
                 } else {
@@ -1058,6 +1071,11 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
             me.loaded = true;
             if ((exception || status === 0) && !_environment.phantom) {
                 me.error =
+                    ("Failed loading synchronously via XHR: '" + url +
+                        "'. It's likely that the file is either being loaded from a " +
+                        "different domain or from the local file system where cross " +
+                        "origin requests are not allowed for security reasons. Try " +
+                        "asynchronous loading instead.") ||
                     true;
                 me.evaluated = true;
             }
@@ -1069,30 +1087,33 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
             }
             else {
                 me.error =
+                    ("Failed loading synchronously via XHR: '" + url +
+                        "'. Please verify that the file exists. XHR status code: " +
+                        status) ||
                     true;
                 me.evaluated = true;
             }
         },
 
-        createLoadElement: function (callback) {
+        createLoadElement: function(callback) {
             var me = this,
                 el = me.getElement(),
-                readyStateChange = function () {
+                readyStateChange = function(){
                     if (this.readyState === 'loaded' || this.readyState === 'complete') {
-                        if (callback) {
+                        if(callback) {
                             callback();
                         }
                     }
                 },
-                errorFn = function () {
+                errorFn = function() {
                     me.error = true;
-                    if (callback) {
+                    if(callback) {
                         callback();
                     }
                 };
             me.preserve = true;
             el.onerror = errorFn;
-            if (Boot.hasReadyState) {
+            if(Boot.hasReadyState) {
                 el.onreadystatechange = readyStateChange;
             } else {
                 el.onload = callback;
@@ -1101,12 +1122,13 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
             el[me.prop] = me.getLoadUrl();
         },
 
-        onLoadElementReady: function () {
+        onLoadElementReady: function() {
             Boot.getHead().appendChild(this.getElement());
             this.evaluated = true;
         },
 
         inject: function (content, asset) {
+            _debug("injecting content for " + this.url);
             var me = this,
                 head = Boot.getHead(),
                 url = me.url,
@@ -1118,7 +1140,7 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
                 basePath = key.substring(0, key.lastIndexOf("/") + 1);
                 base = doc.createElement('base');
                 base.href = basePath;
-                if (head.firstChild) {
+                if(head.firstChild) {
                     head.insertBefore(base, head.firstChild);
                 } else {
                     head.appendChild(base);
@@ -1136,7 +1158,7 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
                 ieMode = ('styleSheet' in el);
 
                 head.appendChild(base);
-                if (ieMode) {
+                if(ieMode) {
                     head.appendChild(el);
                     el.styleSheet.cssText = content;
                 } else {
@@ -1157,18 +1179,18 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
             return me;
         },
 
-        loadCrossDomain: function () {
+        loadCrossDomain: function() {
             var me = this,
-                complete = function () {
+                complete = function(){
                     me.loaded = me.evaluated = me.done = true;
                     me.notifyRequests();
                 };
-            if (me.isCss()) {
+            if(me.isCss()) {
                 me.createLoadElement();
                 me.evaluateLoadElement();
                 complete();
             } else {
-                me.createLoadElement(function () {
+                me.createLoadElement(function(){
                     complete();
                 });
                 me.evaluateLoadElement();
@@ -1180,16 +1202,16 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
             return true;
         },
 
-        loadElement: function () {
+        loadElement: function() {
             var me = this,
-                complete = function () {
+                complete = function(){
                     me.loaded = me.evaluated = me.done = true;
                     me.notifyRequests();
                 };
-            if (me.isCss()) {
+            if(me.isCss()) {
                 return me.loadCrossDomain();
             } else {
-                me.createLoadElement(function () {
+                me.createLoadElement(function(){
                     complete();
                 });
                 me.evaluateLoadElement();
@@ -1197,7 +1219,7 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
             return true;
         },
 
-        loadSync: function () {
+        loadSync: function() {
             var me = this;
             me.fetch({
                 async: false,
@@ -1212,7 +1234,7 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
         load: function (sync) {
             var me = this;
             if (!me.loaded) {
-                if (me.loading) {
+                if(me.loading) {
                     // if we're calling back through load and we're loading but haven't 
                     // yet loaded, then we should be in a sequential, cross domain 
                     // load scenario which means we can't continue the load on the 
@@ -1228,20 +1250,20 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
                 if (!sync) {
                     // if cross domain, just inject the script tag and let the onload
                     // events drive the progression
-                    if (me.isCrossDomain()) {
+                    if(me.isCrossDomain()) {
                         return me.loadCrossDomain();
                     }
                     // for IE, use the readyStateChange allows us to load scripts in parallel
                     // but serialize the evaluation by appending the script node to the 
                     // document
-                    else if (!me.isCss() && Boot.hasReadyState) {
+                    else if(!me.isCss() && Boot.hasReadyState) {
                         me.createLoadElement(function () {
                             me.loaded = true;
                             me.notifyRequests();
                         });
                     }
 
-                    else if (Boot.useElements) {
+                    else if(Boot.useElements) {
                         return me.loadElement();
                     }
                     // for other browsers, just ajax the content down in parallel, and use
@@ -1273,20 +1295,20 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
             this.content = null;
         },
 
-        evaluateLoadElement: function () {
+        evaluateLoadElement: function() {
             Boot.getHead().appendChild(this.getElement());
         },
 
         evaluate: function () {
             var me = this;
-            if (!me.evaluated) {
-                if (me.evaluating) {
+            if(!me.evaluated) {
+                if(me.evaluating) {
                     return;
                 }
                 me.evaluating = true;
-                if (me.content !== undefined) {
+                if(me.content !== undefined) {
                     me.evaluateContent();
-                } else if (!me.error) {
+                } else if(!me.error) {
                     me.evaluateLoadElement();
                 }
                 me.evaluated = me.done = true;
@@ -1295,8 +1317,8 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
         },
 
         /*
-        * @private
-        */
+         * @private
+         */
         cleanup: function () {
             var me = this,
                 el = me.el,
@@ -1339,26 +1361,27 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
                 request = requests[i];
                 request.processLoadedEntries();
             }
-            if (this.done) {
+            if(this.done) {
                 this.fireListeners();
             }
         },
 
-        onDone: function (listener) {
+        onDone: function(listener) {
             var me = this,
                 listeners = me.listeners || (me.listeners = []);
-            if (me.done) {
+            if(me.done) {
                 listener(me);
             } else {
                 listeners.push(listener);
             }
         },
 
-        fireListeners: function () {
+        fireListeners: function() {
             var listeners = this.listeners,
                 listener;
-            if (listeners && listeners.length > 0) {
-                while ((listener = listeners.shift())) {
+            if(listeners && listeners.length > 0) {
+                _debug("firing event listeners for url " + this.url);
+                while((listener = listeners.shift())) {
                     listener(this);
                 }
             }
@@ -1366,13 +1389,13 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
     };
 
     /*
-    * Turns on or off the "cache buster" applied to dynamically loaded scripts. Normally
-    * dynamically loaded scripts have an extra query parameter appended to avoid stale
-    * cached scripts. This method can be used to disable this mechanism, and is primarily
-    * useful for testing. This is done using a cookie.
-    * @param {Boolean} disable True to disable the cache buster.
-    * @param {String} [path="/"] An optional path to scope the cookie.
-    */
+     * Turns on or off the "cache buster" applied to dynamically loaded scripts. Normally
+     * dynamically loaded scripts have an extra query parameter appended to avoid stale
+     * cached scripts. This method can be used to disable this mechanism, and is primarily
+     * useful for testing. This is done using a cookie.
+     * @param {Boolean} disable True to disable the cache buster.
+     * @param {String} [path="/"] An optional path to scope the cookie.
+     */
     Ext.disableCacheBuster = function (disable, path) {
         var date = new Date();
         date.setTime(date.getTime() + (disable ? 10 * 365 : -1) * 24 * 60 * 60 * 1000);
@@ -1384,10 +1407,10 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
     Boot.init();
     return Boot;
 
-    // NOTE: We run the eval at global scope to protect the body of the function and allow
-    // compressors to still process it.
-} (function () {
-})); //(eval("/*@cc_on!@*/!1"));
+// NOTE: We run the eval at global scope to protect the body of the function and allow
+// compressors to still process it.
+}(function () {
+}));//(eval("/*@cc_on!@*/!1"));
 
 /*
  * This method evaluates the given code free of any local variable. This
@@ -1559,6 +1582,7 @@ Ext.Microloader = Ext.Microloader || (function () {
              * @private
              */
             notify: function () {
+                Boot.debug("notifying microloader ready listeners...");
                 var listener;
                 while((listener = _listeners.shift())) {
                     listener();

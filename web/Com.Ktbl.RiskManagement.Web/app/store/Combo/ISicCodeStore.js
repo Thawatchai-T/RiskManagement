@@ -28,50 +28,12 @@ Ext.define('RiskManagement.store.Combo.ISicCodeStore', {
         me.callParent([Ext.apply({
             storeId: 'Combo.ISicCodeStore',
             model: 'RiskManagement.model.Combo.IsicCodeModel',
-            data: [
-                {
-                    id: 286,
-                    Name: 'est'
-                },
-                {
-                    id: 330,
-                    Name: 'itaque'
-                },
-                {
-                    id: 842,
-                    Name: 'deserunt'
-                },
-                {
-                    id: 948,
-                    Name: 'recusandae'
-                },
-                {
-                    id: 808,
-                    Name: 'eius'
-                },
-                {
-                    id: 398,
-                    Name: 'corporis'
-                },
-                {
-                    id: 204,
-                    Name: 'officiis'
-                },
-                {
-                    id: 879,
-                    Name: 'aut'
-                },
-                {
-                    id: 106,
-                    Name: 'officia'
-                },
-                {
-                    id: 766,
-                    Name: 'eveniet'
-                }
-            ],
             proxy: {
-                type: 'memory'
+                type: 'rest',
+                url: 'api/common/GetIsicCode',
+                reader: {
+                    type: 'json'
+                }
             }
         }, cfg)]);
     }

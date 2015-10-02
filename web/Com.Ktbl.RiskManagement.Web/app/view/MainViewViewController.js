@@ -15,5 +15,9 @@
 
 Ext.define('RiskManagement.view.MainViewViewController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.mainview'
+    alias: 'controller.mainview',
+    onMainViewBeforeRender: function (component, eOpts) {
+        
+        
+    }
 });

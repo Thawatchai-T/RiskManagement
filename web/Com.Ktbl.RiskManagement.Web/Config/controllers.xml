@@ -2,7 +2,46 @@
 <objects xmlns="http://www.springframework.net" default-autowire="constructor">
 
   <object type="Com.Ktbl.RiskManagement.Web.Controllers.CommonController, Com.Ktbl.RiskManagement.Web" singleton="false" >
-    <property name="Title"  value="Common test common Controller" />
+    
+    <property name="OccupationRepository"  ref="occupationRepository" />
+    <property name="PositionRepository"  ref="positionRepository" />
+    
+    <property name="PoliticianRelationshipRepository"  ref="politicianRelationshipRepository" />
+    <property name="CountryRepository" ref="countryRepository"/>
+    <property name="CommonRepository" ref="commonRepository"/>
+    
+  </object>
+
+<!--home-->
+  <object type="Com.Ktbl.RiskManagement.Web.Controllers.HomeController, Com.Ktbl.RiskManagement.Web" singleton="false" >
+    <!--<property name="Title"  value="Common test common Controller" />-->
+    <!--<property name="CCISourceRepository"  ref="cciSourceRepository" />-->
+    <property name="OccupationRepository"  ref="occupationRepository" />
+    <property name="PositionRepository"  ref="positionRepository" />
+    <property name="PoliticianRelationshipRepository"  ref="politicianRelationshipRepository" />
+    <property name="CountryRepository" ref="countryRepository"/>
+    <property name="DecisionTableRepository" ref="decisionTable"/>
+    <property name="ApplicationNameRepository" ref="applicationNameRepository"/>
+  </object>
+
+  <!--IndividualController-->
+  <object type="Com.Ktbl.RiskManagement.Web.Controllers.IndividualController, Com.Ktbl.RiskManagement.Web" singleton="false" >
+    <property name="Personal"  ref="personal-model" />
+    <property name="PersonalRepository"  ref="personalRepository" />
+    <property name="MainProcess"  ref="main-processs" />
+  </object>
+  
+  <!--IndividualController-->
+  <object type="Com.Ktbl.RiskManagement.Web.Controllers.CorporationController, Com.Ktbl.RiskManagement.Web" singleton="false" >
+    <property name="CorporationRepository"  ref="corporationRepository" />
+    <property name="MainProcess"  ref="main-processs" />
+  </object>
+
+  <!--ShareholdersController-->
+  <object type="Com.Ktbl.RiskManagement.Web.Controllers.ShareholdersController, Com.Ktbl.RiskManagement.Web" singleton="false" >
+    <property name="ShareholderRepository"  ref="shareholderRepository" />
+    <property name="OccupationRepository"  ref="occupationRepository" />
+    <property name="MainProcess"  ref="main-processs" />
   </object>
   
   <!--db2-->

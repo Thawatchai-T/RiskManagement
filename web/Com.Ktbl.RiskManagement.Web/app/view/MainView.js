@@ -32,28 +32,35 @@ Ext.define('RiskManagement.view.MainView', {
     layout: 'border',
 
     items: [
-        {
-            xtype: 'panel',
-            region: 'north',
-            height: 100,
-            itemId: 'headerPanel',
-            title: 'Header'
-        },
-        {
-            xtype: 'tabpanel',
-            region: 'center',
-            itemId: 'contentPanel',
-            activeTab: 0,
-            items: [
-                {
-                    xtype: 'personalform',
-                    height: 150
-                },
-                {
-                    xtype: 'corporationlform'
-                }
-            ]
-        }
-    ]
+    //{
+    //    xtype: 'panel',
+    //    region: 'north',
+    //    hiden: true,
+    //    height: 100,
+    //    itemId: 'headerPanel',
+    //    title: 'Header'
+    //},
+        //{
+        //xtype: 'tabpanel',
+        //region: 'center',
+        //itemId: 'contentPanel',
+        //activeTab: 0,
+        //height: 150,
+        //items: [
+        //        {
+        //            xtype: 'personalform'
+
+        //        },
+        //        {
+        //            xtype: 'corporationlform'
+        //        }
+        //    ]
+        // 
+        //}
+    ],
+    listeners: {
+        beforerender: 'onMainViewBeforeRender'
+    }
+
 
 });

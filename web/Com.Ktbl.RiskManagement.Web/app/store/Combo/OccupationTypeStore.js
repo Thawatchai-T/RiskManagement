@@ -28,130 +28,13 @@ Ext.define('RiskManagement.store.Combo.OccupationTypeStore', {
         me.callParent([Ext.apply({
             storeId: 'Combo.OccupationTypeStore',
             model: 'RiskManagement.model.Combo.OccupationTypeModel',
-            data: [
-                {
-                    id: 1000,
-                    Name: 'earum'
-                },
-                {
-                    id: 674,
-                    Name: 'non'
-                },
-                {
-                    id: 974,
-                    Name: 'quis'
-                },
-                {
-                    id: 994,
-                    Name: 'explicabo'
-                },
-                {
-                    id: 854,
-                    Name: 'odit'
-                },
-                {
-                    id: 343,
-                    Name: 'totam'
-                },
-                {
-                    id: 754,
-                    Name: 'ut'
-                },
-                {
-                    id: 313,
-                    Name: 'asperiores'
-                },
-                {
-                    id: 597,
-                    Name: 'quis'
-                },
-                {
-                    id: 97,
-                    Name: 'sint'
-                },
-                {
-                    id: 130,
-                    Name: 'aut'
-                },
-                {
-                    id: 636,
-                    Name: 'aliquam'
-                },
-                {
-                    id: 613,
-                    Name: 'cum'
-                },
-                {
-                    id: 791,
-                    Name: 'ut'
-                },
-                {
-                    id: 468,
-                    Name: 'quibusdam'
-                },
-                {
-                    id: 994,
-                    Name: 'commodi'
-                },
-                {
-                    id: 319,
-                    Name: 'eligendi'
-                },
-                {
-                    id: 377,
-                    Name: 'delectus'
-                },
-                {
-                    id: 878,
-                    Name: 'assumenda'
-                },
-                {
-                    id: 595,
-                    Name: 'praesentium'
-                },
-                {
-                    id: 675,
-                    Name: 'at'
-                },
-                {
-                    id: 703,
-                    Name: 'reiciendis'
-                },
-                {
-                    id: 444,
-                    Name: 'et'
-                },
-                {
-                    id: 769,
-                    Name: 'distinctio'
-                },
-                {
-                    id: 203,
-                    Name: 'et'
-                },
-                {
-                    id: 80,
-                    Name: 'magni'
-                },
-                {
-                    id: 12,
-                    Name: 'pariatur'
-                },
-                {
-                    id: 563,
-                    Name: 'quia'
-                },
-                {
-                    id: 470,
-                    Name: 'est'
-                },
-                {
-                    id: 296,
-                    Name: 'fugiat'
-                }
-            ],
+          //  autoLoad: true,
             proxy: {
-                type: 'memory'
+                type: 'rest',
+                url: 'api/common/GetOccupation?type=type',
+                reader: {
+                    type: 'json'
+                }
             }
         }, cfg)]);
     }

@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Com.Ktbl.RiskManagement.Map</RootNamespace>
     <AssemblyName>Com.Ktbl.RiskManagement.Map</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,13 +31,20 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FluentNHibernate">
       <HintPath>..\..\RiskManagementSolution\packages\FluentNHibernate.2.0.1.0\lib\net40\FluentNHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="HibernatingRhinos.Profiler.Appender">
+      <HintPath>..\..\lib\HibernatingRhinos.Profiler.Appender.dll</HintPath>
+    </Reference>
     <Reference Include="Iesi.Collections">
       <HintPath>..\..\RiskManagementSolution\packages\Iesi.Collections.4.0.1.4000\lib\net40\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\RiskManagementSolution\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\..\RiskManagementSolution\packages\NHibernate.4.0.3.4000\lib\net40\NHibernate.dll</HintPath>
@@ -49,11 +58,76 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ApplicationNameMap.cs" />
+    <Compile Include="Common\BusinessTypeMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\CCISourceMap.cs" />
+    <Compile Include="Common\CommitteeTypeMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\CommonMap.cs" />
+    <Compile Include="Common\RegistrationTypeMap.cs" />
+    <Compile Include="Common\CountryMap.cs" />
+    <Compile Include="Common\ISicCodeMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\LocationIncomeMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\OccupationCatelogyMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\OccupationGroupMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\OccupationTypeMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\PoliticianRelationshipMap.cs" />
+    <Compile Include="Common\PositionMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\RegionMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\SourceOfIncomeMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CorporationMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DecisionTableMap.cs" />
+    <Compile Include="Helpers\NHelper.cs" />
+    <Compile Include="PersonalMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CommonsRepository.cs" />
+    <Compile Include="Repository\CCISourceRepository.cs" />
+    <Compile Include="Repository\ApplicationNameRepository.cs" />
+    <Compile Include="Repository\ShareholderRepository.cs" />
+    <Compile Include="Repository\CorporationRepository.cs" />
+    <Compile Include="Repository\CountryRepository.cs" />
+    <Compile Include="Repository\DecisionTableRepository.cs" />
+    <Compile Include="Repository\PopsitionRepository.cs" />
+    <Compile Include="Repository\OccupationRepository.cs" />
+    <Compile Include="Repository\PoliticianRelationshipRepository.cs" />
+    <Compile Include="Repository\NhRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repository\PersonalRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ShareholderMap.cs" />
+    <Compile Include="ViewShareholderMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Com.Ktbl.RiskManagement.Domain\Com.Ktbl.RiskManagement.Domain.csproj">
+      <Project>{29139670-58D9-438F-ACF5-E439FF7E0036}</Project>
+      <Name>Com.Ktbl.RiskManagement.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

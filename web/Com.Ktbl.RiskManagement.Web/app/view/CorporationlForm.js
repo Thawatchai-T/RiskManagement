@@ -60,8 +60,19 @@ Ext.define('RiskManagement.view.CorporationlForm', {
             items: [
                 {
                     xtype: 'hiddenfield',
-                    fieldLabel: 'ID',
-                    name: 'id'
+                    //fieldLabel: 'ID',
+                    name: 'Id',
+                    value:'0'
+                },
+                {
+                    xtype: 'hiddenfield',
+                    name: 'Extension1',
+                    //value: '0'
+                },
+                {
+                    xtype: 'hiddenfield',
+                    name: 'Extension2',
+                    //value: '0'
                 },
                 {
                     xtype: 'checkboxfield',
@@ -73,12 +84,14 @@ Ext.define('RiskManagement.view.CorporationlForm', {
                 },
                 {
                     xtype: 'combobox',
+                    allowBlank: false,
                     fieldLabel: 'สัญชาติ',
                     name: 'Nationality',
                     emptyText: '[ สัญชาติ ]',
                     displayField: 'Name',
                     store: 'Combo.RegionStore',
-                    valueField: 'id'
+                    valueField: 'Id'
+
                 },
                 {
                     xtype: 'checkboxfield',
@@ -88,6 +101,7 @@ Ext.define('RiskManagement.view.CorporationlForm', {
                 {
                     xtype: 'textfield',
                     colspan: 2,
+                    allowBlank: false,
                     fieldLabel: 'เลขที่ทะเบียนการค้า',
                     name: 'RegistrationId',
                     emptyText: '[ xxxxxxxxxxxxx ]'
@@ -108,8 +122,8 @@ Ext.define('RiskManagement.view.CorporationlForm', {
                             allowBlank: false,
                             emptyText: '[ เลือกประเภทกิจการ ]',
                             displayField: 'Name',
-                            store: 'Combo.ISicCodeStore',
-                            valueField: 'id'
+                            store: 'Combo.RegistrationTypeStore',
+                            valueField: 'Id'
                         },
                         {
                             xtype: 'textfield',
@@ -117,6 +131,7 @@ Ext.define('RiskManagement.view.CorporationlForm', {
                             width: '100%',
                             fieldLabel: 'ชื่อบริษัท',
                             hideLabel: true,
+                            allowBlank: false,
                             name: 'CompanyName',
                             emptyText: '[ ชื่อบริษัท ]'
                         }
@@ -124,113 +139,212 @@ Ext.define('RiskManagement.view.CorporationlForm', {
                 },
                 {
                     xtype: 'combobox',
+                    reference: 'catelogyField',
                     fieldLabel: 'หมวดอาชีพ',
-                    name: 'OccupationCatelogy',
+                    name: 'OccupationCategoryId',
                     emptyText: '[ เลือกหมวดอาชีพ ]',
                     displayField: 'Name',
                     store: 'Combo.OccupationCatelogyStore',
-                    valueField: 'Id'
+                    valueField: 'Id',
+                    autoLoadOnValue: true,
+                    editable: false,
+                    allowBlank: false,
+                    listeners: {
+                        change: 'onCatelogyChange'
+                    }
                 },
                 {
                     xtype: 'combobox',
+                    reference: 'groupField',
                     fieldLabel: 'กลุ่มอาชีพ',
-                    name: 'OccupationGroup',
+                    name: 'OccupationGroupId',
                     emptyText: '[ เลือกกลุ่มอาชีพ ]',
                     displayField: 'Name',
                     store: 'Combo.OccupationGroupStore',
-                    valueField: 'Id'
+                    valueField: 'Id',
+                    autoLoadOnValue: true,
+                    editable: false,
+                    allowBlank: false,
+                    listeners: {
+                        change: 'onGroupChange'
+                    }
                 },
                 {
                     xtype: 'combobox',
                     fieldLabel: 'ประเภทอาชีพ',
-                    name: 'OccupationType',
+                    reference: 'typeField',
+                    name: 'OccupationTypeId',
                     emptyText: '[ เลือกประเภทอาชีพ ]',
                     displayField: 'Name',
                     store: 'Combo.OccupationTypeStore',
-                    valueField: 'id'
+                    valueField: 'Id',
+                    autoLoadOnValue: true,
+                    editable: false,
+                    allowBlank: false,
+                    listeners: {
+                        change: 'onTypeChange'
+                    }
+                    
                 },
                 {
                     xtype: 'combobox',
                     fieldLabel: 'ตำแหน่ง',
-                    name: 'Positon',
+                    reference: 'positionField',
+                    name: 'PositionId',
                     emptyText: '[ เลือกตำแหน่ง ]',
                     displayField: 'Name',
                     store: 'Combo.PositionStore',
+                    valueField: 'Id',
+                    autoLoadOnValue: true,
+                    editable: false,
+                    allowBlank: false,
+
+                },
+                {
+                    xtype: 'combobox',
+                    allowBlank: false,
+                    fieldLabel: 'ประเภทธุรกิจ',
+                    name: 'BusinessId',
+                    emptyText: '[ เลือกประเภทอาชีพ ]',
+                    displayField: 'Name',
+                    store: 'Combo.BusinessTypeStore',
                     valueField: 'Id'
                 },
                 {
                     xtype: 'combobox',
-                    fieldLabel: 'ประเภทธุรกิจ',
-                    name: 'BusinessType',
-                    emptyText: '[ เลือกประเภทอาชีพ ]',
-                    displayField: 'Name',
-                    store: 'Combo.BusinessTypeStore',
-                    valueField: 'id'
-                },
-                {
-                    xtype: 'combobox',
+                    allowBlank: false,
                     fieldLabel: 'แหล่งที่มาของรายได้',
                     name: 'SourceOfIncome',
                     emptyText: '[ แหล่งที่มาของรายได้ ]',
                     displayField: 'Name',
                     store: 'Combo.SourceOfIncomeStore',
-                    valueField: 'id'
+                    valueField: 'Id'
                 },
                 {
                     xtype: 'combobox',
                     fieldLabel: 'แหล่งที่ตั้งของรายได้',
-                    name: 'LocationIncome',
+                    allowBlank: false,
+                    name: 'LocationOfIncome',
                     emptyText: '[ เลือกที่ตั้งของรายได้ ]',
                     displayField: 'Name',
                     store: 'Combo.RegionStore',
-                    valueField: 'id'
+                    valueField: 'Id'
                 },
                 {
                     xtype: 'combobox',
+                    allowBlank: false,
                     fieldLabel: 'อาศัยอยู่ที่ประเทศ',
                     name: 'LiveInCountry',
                     emptyText: '[ อาศัยอยู่ที่ประเทศ ]',
                     displayField: 'Name',
                     store: 'Combo.RegionStore',
-                    valueField: 'id'
+                    valueField: 'Id'
                 },
+                //{
+                //    xtype: 'checkboxfield',
+                //    fieldLabel: 'ความสัมพันธ์กับนักการเมือง',
+                //    name: 'IsPolitician'
+                //},
                 {
-                    xtype: 'checkboxfield',
-                    fieldLabel: 'ความสัมพันธ์กับนักการเมือง',
-                    name: 'IsPolitician'
+                    xtype: 'combobox',
+                    allowBlank: false,
+                    fieldLabel: 'ความสัมธ์กับนักการเมือง',
+                    name: 'PoliticianRelationship',
+                    emptyText: '[ ความสัมธ์กับนักการเมือง ]',
+                    displayField: 'Name',
+                    store: 'Combo.PoliticianRelationshipStore',
+                    valueField: 'Id'
                 },
                 {
                     xtype: 'combobox',
+                    allowBlank: false,
                     fieldLabel: 'ประเภทกิจการ',
                     name: 'Tsic',
                     emptyText: '[เลือกประเภทกิจการ ]',
                     displayField: 'Name',
                     store: 'Combo.ISicCodeStore',
-                    valueField: 'id'
+                    valueField: 'Id'
                 },
                 {
                     xtype: 'filefield',
+                    allowBlank: false,
                     colspan: 2,
                     width: '100%',
                     fieldLabel: 'หนังสือให้ความยินยอม ในการเปิดเผยข้อมูลบริษัท',
                     labelWidth: 300,
                     name: 'File1',
-                    emptyText: 'ไฟล์'
+                    emptyText: 'ไฟล์',
+                    listeners: {
+                        //validitychange: function (comp, isValid, eOpts) {
+                        //    console.log('validitychange');
+
+                        //},
+                        //dirtychange: function (comp, isDirty, eOpts) {
+                        //    console.log('dirtychange');
+
+                        //},
+                        change: function (comp, value, eOpts) {
+                            var pos = value.lastIndexOf('.'),
+                                ext = value.substring(pos);
+                            comp.up().getForm().findField('Extension1').setValue(ext);
+                        }
+                    }
                 },
                 {
                     xtype: 'filefield',
                     colspan: 2,
+                    allowBlank: false,
                     width: '100%',
                     fieldLabel: 'เอกสารแนบ KYC/CDD',
                     name: 'File2',
-                    emptyText: 'ไฟล์'
+                    emptyText: 'ไฟล์',
+                    listeners: {
+                        validitychange: function (comp, isValid, eOpts) {
+                            console.log('validitychange');
+
+                        },
+                        dirtychange:function( comp, isDirty, eOpts ){
+                            console.log('dirtychange');
+
+                        },
+                        change: function (comp, value, eOpts) {
+                            var pos = value.lastIndexOf('.'),
+                                ext = value.substring(pos);
+                            comp.up().getForm().findField('Extension2').setValue(ext);
+                        }
+                    }
                 },
+                //{
+                //    xtype: 'checkboxfield',
+                //    colspan: 2,
+                //    fieldLabel: 'ความยินยอม ในการเปิดเผบข้อมูลบริษัท',
+                //    labelWidth: 250,
+                //    name: 'IsAccept'
+                //},
                 {
-                    xtype: 'checkboxfield',
-                    colspan: 2,
+                    xtype: 'radiogroup',
                     fieldLabel: 'ความยินยอม ในการเปิดเผบข้อมูลบริษัท',
-                    labelWidth: 250,
-                    name: 'IsAccept'
+                    colspan: 2,
+                    allowBlank: false,
+                    items: [
+                        {
+                            xtype: 'radiofield',
+                            name: 'IsAccept',
+                            boxLabel: 'ยอมรับ',
+                            value: 1,
+                            allowBlank: false,
+                            margin: '0 5 0 5'
+                        },
+                        {
+                            xtype: 'radiofield',
+                            name: 'IsAccept',
+                            boxLabel: 'ไม่ยอมรับ',
+                            checked: true,
+                            value:0,
+                            width: 250,
+                            margin: '0 5 0 5'
+                        }
+                    ]
                 },
                 {
                     xtype: 'container',
@@ -245,7 +359,7 @@ Ext.define('RiskManagement.view.CorporationlForm', {
                             xtype: 'button',
                             flex: 1,
                             formBind: true,
-                            itemId: 'saveButton',
+                            id: 'saveButton',
                             margin: 5,
                             text: 'Save',
                             listeners: {
@@ -255,17 +369,30 @@ Ext.define('RiskManagement.view.CorporationlForm', {
                         {
                             xtype: 'button',
                             flex: 1,
-                            itemId: 'mybutton1',
+                            id: 'shareholdersButton',
                             text: 'กรรมการผู้ถือหุ้น',
                             tooltip: 'บันทึกกรรมการผู้ถือหุ้น',
+                            //TODO: DEGUB [20150810] woody
+                            hidden:true,
                             listeners: {
                                 click: 'onShareholdersClick'
                             }
                         },
+                         {
+                             xtype: 'button',
+                             flex: 1,
+                             hidden: true,
+                             id: 'takeRiskButton',
+                             margin: 5,
+                             text: 'TakeRisk',
+                             listeners: {
+                                 click: 'onTakeRisk'
+                             }
+                         },
                         {
                             xtype: 'button',
                             flex: 1,
-                            itemId: 'cancelButton',
+                            reference: 'cancelButton',
                             margin: 5,
                             text: 'Cancel',
                             listeners: {
@@ -276,6 +403,9 @@ Ext.define('RiskManagement.view.CorporationlForm', {
                 }
             ]
         }
-    ]
+    ],
+    listeners: {
+        beforerender: 'onBeforeRender'
+    }
 
 });

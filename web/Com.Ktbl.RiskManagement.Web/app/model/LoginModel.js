@@ -27,7 +27,7 @@ Ext.define('RiskManagement.model.LoginModel', {
             name: 'UserName'
         },
         {
-            type: 'string',
+           // type: 'string',
             name: 'Password'
         }
     ]

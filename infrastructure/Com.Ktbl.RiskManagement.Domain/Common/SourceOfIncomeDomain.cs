@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Com.Ktbl.RiskManagement.Domain
 {
-    public class Class1
+    public class SourceOfIncomeDomain:CommonDomain
     {
-
+        //public virtual int Id { get; set; }
     }
 }

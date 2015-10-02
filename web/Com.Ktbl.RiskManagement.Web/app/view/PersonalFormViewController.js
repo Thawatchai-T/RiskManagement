@@ -17,34 +17,154 @@ Ext.define('RiskManagement.view.PersonalFormViewController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.personalform',
 
-    onSave: function(button, e, eOpts) {
+    onSave: function (button, e, eOpts) {
         var form = this.getReferences().form,
             values = form.getForm().getValues(),
             store = this.getStore('individualModels');
 
-        // Valid
-        if (form.isValid()) {
+        if (form.isValid() && form.down('#is-accept').items.items[0].getValue()) {
+            form.submit({
+                //url: 'home/Upload',
+                url: 'api/Individual/PostFile',
+                //type: 'POST',
+                timeout: 99999,
+                success: function (form, action) {
 
-            // TODO: Assign the record's ID from data source
-            // Normally, this value would be auto-generated,
-            // or returned from the server
-            values.id = store.count() + 1;
+                    if (action.response.responseText.status) {
+                        Ext.Msg.alert('Success', action.response.responseText);
 
-            // Save record
-            store.add(values);
+                    }
+                },
+                failure: function (form, action) {
+                    Ext.Msg.alert('Risk Status', Ext.decode(action.response.responseText).Result);
+                }
 
-            // Commit changes
-            store.commitChanges();
+            });
 
-            // Complete
-            form.close();
-
+        } else {
+            Ext.Msg.alert('Status', 'กรุณาเลือกความยินยอม!');
         }
+
+        //            // TODO: Assign the record's ID from data source
+        //            // Normally, this value would be auto-generated,
+        //            // or returned from the server
+        //            values.id = store.count() + 1;
+
+        //            // Save record
+        //            store.add(values);
+
+        //            // Commit changes
+        //            store.commitChanges();
+
+        //            // Complete
+        //            form.close();
+
+        //        }
     },
 
-    onCancel: function(button, e, eOpts) {
+    onCancel: function (button, e, eOpts) {
+
         var form = this.getReferences().form;
         form.close();
-    }
+
+    },
+
+    onCatelogyChange: function (field, newValue, oldValue, eOpts) {
+        var refs = this.getReferences(),
+            groupField = refs.groupField,
+            typeField = refs.typeField,
+            positionField = refs.positionField;
+        console.log(newValue);
+        console.log(oldValue);
+        // Clear selected series value
+        if (oldValue != null) {
+            groupField.setValue('');
+            typeField.setValue('');
+            positionField.setValue('');
+        }
+        var store = groupField.getStore();
+
+        store.clearFilter();
+        store.filter('CatelogyId', newValue);
+
+
+    },
+
+    onGroupChange: function (field, newValue, oldValue, eOpts) {
+        var refs = this.getReferences(),
+            typeField = refs.typeField,
+            positionField = refs.positionField;
+
+        // Clear selected series value
+        if (oldValue != null) {
+            typeField.setValue('');
+            positionField.setValue('');
+        }
+        var store = typeField.getStore();
+
+        store.clearFilter();
+        store.filter('GroupId', newValue);
+    },
+
+    onTypeChange: function (field, newValue, oldValue, eOpts) {
+        var refs = this.getReferences(),
+            positionField = refs.positionField;
+
+        // Clear selected series value
+        if (oldValue != null) {
+            positionField.setValue('');
+        }
+        var store = positionField.getStore();
+
+        store.clearFilter();
+        store.filter('TypeId', newValue);
+    },
+
+    onBeforeRender: function (component, eOpts) {
+        var refs = this.getReferences(),
+        OccupationCatelogyField = refs.catelogyField,
+        OccupationGroupField = refs.groupField,
+        OccupationTypeField = refs.typeField;
+        PositionField = refs.positionField,
+        AppKey = refs.appkey,
+        User = refs.user,
+        RequestNo = refs.requestno;
+
+        OccupationCatelogyField.setValue(window.OccupationCatelogyId);
+
+        OccupationGroupField.setValue(window.OccupationGroupId);
+
+        OccupationTypeField.setValue(window.OccupationTypeId);
+
+        PositionField.setValue(window.PositionId);
+
+        AppKey.setValue(window.Key)
+        User.setValue(window.User);
+        RequestNo.setValue(window.RequestNo);
+
+
+    },
+
+    onFilefieldChange: function (field, isValid, eOpts) {
+        var refs = this.getReferences();
+        var indexofPeriod = field.getValue().lastIndexOf("."),
+            uploadedExtension = field.getValue().substr(indexofPeriod + 1, field.getValue().length - indexofPeriod);
+
+        
+        if(uploadedExtension != "png"){
+        
+            //Ext.Msg.alert('Status', 'File suport extension png jpg gif!', function (me) { 
+            //    
+            //    refs.file2Field.setValue("");
+            //    console.log(refs.file2Field.getValue());
+            //});
+            //refs.file2Field.setValue("");
+
+        }
+
+    },
+
+
+
 
 });

@@ -20,7 +20,7 @@ namespace Com.Ktbl.RiskManagement.Web
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            log4net.Config.XmlConfigurator.Configure();
+            
         }
 
         protected override System.Web.Http.Dependencies.IDependencyResolver BuildWebApiDependencyResolver()

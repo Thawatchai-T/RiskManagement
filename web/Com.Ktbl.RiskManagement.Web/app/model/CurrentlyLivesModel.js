@@ -27,7 +27,7 @@ Ext.define('RiskManagement.model.CurrentlyLivesModel', {
             name: 'Id'
         },
         {
-            name: 'Name'
+            name: 'NameTh'
         }
     ]
 });

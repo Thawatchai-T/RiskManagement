@@ -25,56 +25,56 @@ Ext.define('RiskManagement.view.ShareholdersWindowViewModel', {
     stores: {
         shareholdersModels: {
             model: 'RiskManagement.model.ShareholdersModel',
-            data: [
-                {
-                    id: 148,
-                    CorporationId: 3333333333333,
-                    CommitteeType: 1,
-                    IdCard: 3570,
-                    TitleName: 'qui',
-                    FirstName: 'et',
-                    LastName: 'omnis',
-                    OccupationCatelogy: {
-                        Id: 777,
-                        Name: 'est'
-                    },
-                    OccupationGroup: 1,
-                    OccupationType: 1,
-                    Position: 1,
-                    BusinessType: 1,
-                    SourceOfIncome: 1,
-                    LocationIncome: 1,
-                    CurrentlyLives: 1,
-                    IsPolitician: true,
-                    File1: 'eos',
-                    File2: 'aperiam',
-                    IsAccept: true
-                },
-                {
-                    id: 149,
-                    CorporationId: 3333333333333,
-                    CommitteeType: 2,
-                    IdCard: 3570,
-                    TitleName: 1,
-                    FirstName: 'e22t',
-                    LastName: 'o232mnis',
-                    OccupationCatelogy: {
-                        Id: 777,
-                        Name: 'est'
-                    },
-                    OccupationGroup: 1,
-                    OccupationType: 1,
-                    Position: 1,
-                    BusinessType: 1,
-                    SourceOfIncome: 1,
-                    LocationIncome: 1,
-                    CurrentlyLives: 1,
-                    IsPolitician: true,
-                    File1: 'eos',
-                    File2: 'aperiam',
-                    IsAccept: true
-                }
-            ],
+            //data: [
+            //    {
+            //        id: 148,
+            //        CorporationId: 3333333333333,
+            //        CommitteeType: 1,
+            //        IdCard: 3570,
+            //        TitleName: 'qui',
+            //        FirstName: 'et',
+            //        LastName: 'omnis',
+            //        OccupationCatelogy: {
+            //            Id: 777,
+            //            Name: 'est'
+            //        },
+            //        OccupationGroup: 1,
+            //        OccupationType: 1,
+            //        Position: 1,
+            //        BusinessType: 1,
+            //        SourceOfIncome: 1,
+            //        LocationIncome: 1,
+            //        CurrentlyLives: 1,
+            //        IsPolitician: true,
+            //        File1: 'eos',
+            //        File2: 'aperiam',
+            //        IsAccept: true
+            //    },
+            //    {
+            //        id: 149,
+            //        CorporationId: 3333333333333,
+            //        CommitteeType: 2,
+            //        IdCard: 3570,
+            //        TitleName: 1,
+            //        FirstName: 'e22t',
+            //        LastName: 'o232mnis',
+            //        OccupationCatelogy: {
+            //            Id: 777,
+            //            Name: 'est'
+            //        },
+            //        OccupationGroup: 1,
+            //        OccupationType: 1,
+            //        Position: 1,
+            //        BusinessType: 1,
+            //        SourceOfIncome: 1,
+            //        LocationIncome: 1,
+            //        CurrentlyLives: 1,
+            //        IsPolitician: true,
+            //        File1: 'eos',
+            //        File2: 'aperiam',
+            //        IsAccept: true
+            //    }
+            //],
             proxy: {
                 type: 'memory'
             }
@@ -82,372 +82,30 @@ Ext.define('RiskManagement.view.ShareholdersWindowViewModel', {
         shareholdersGridViews: {
             pageSize: 10,
             model: 'RiskManagement.model.ShareholdersGridView',
-            data: [
-                {
-                    Id: 232,
-                    CorporationId: 'nihil',
-                    CommitteeType: 'placeat',
-                    CommitteeTypeName: 'ut',
-                    IdCard: 'dolores',
-                    OccupationTypeName: 'quo',
-                    BusinessType: 'officia',
-                    LocationIncome: 'temporibus',
-                    LocationIncomeName: 'porro',
-                    IsPolitician: 'reiciendis'
-                },
-                {
-                    Id: 451,
-                    CorporationId: 'autem',
-                    CommitteeType: 'quibusdam',
-                    CommitteeTypeName: 'veritatis',
-                    IdCard: 'maxime',
-                    OccupationTypeName: 'excepturi',
-                    BusinessType: 'enim',
-                    LocationIncome: 'distinctio',
-                    LocationIncomeName: 'reprehenderit',
-                    IsPolitician: 'qui'
-                },
-                {
-                    Id: 803,
-                    CorporationId: 'error',
-                    CommitteeType: 'asperiores',
-                    CommitteeTypeName: 'voluptas',
-                    IdCard: 'hic',
-                    OccupationTypeName: 'aperiam',
-                    BusinessType: 'vero',
-                    LocationIncome: 'iusto',
-                    LocationIncomeName: 'quasi',
-                    IsPolitician: 'porro'
-                },
-                {
-                    Id: 364,
-                    CorporationId: 'ipsa',
-                    CommitteeType: 'amet',
-                    CommitteeTypeName: 'et',
-                    IdCard: 'molestiae',
-                    OccupationTypeName: 'distinctio',
-                    BusinessType: 'expedita',
-                    LocationIncome: 'non',
-                    LocationIncomeName: 'amet',
-                    IsPolitician: 'ut'
-                },
-                {
-                    Id: 551,
-                    CorporationId: 'cumque',
-                    CommitteeType: 'sunt',
-                    CommitteeTypeName: 'reprehenderit',
-                    IdCard: 'dolor',
-                    OccupationTypeName: 'ut',
-                    BusinessType: 'consequatur',
-                    LocationIncome: 'molestiae',
-                    LocationIncomeName: 'omnis',
-                    IsPolitician: 'aut'
-                },
-                {
-                    Id: 492,
-                    CorporationId: 'necessitatibus',
-                    CommitteeType: 'nostrum',
-                    CommitteeTypeName: 'aut',
-                    IdCard: 'asperiores',
-                    OccupationTypeName: 'excepturi',
-                    BusinessType: 'non',
-                    LocationIncome: 'tempora',
-                    LocationIncomeName: 'deserunt',
-                    IsPolitician: 'dolores'
-                },
-                {
-                    Id: 232,
-                    CorporationId: 'distinctio',
-                    CommitteeType: 'est',
-                    CommitteeTypeName: 'similique',
-                    IdCard: 'recusandae',
-                    OccupationTypeName: 'est',
-                    BusinessType: 'ab',
-                    LocationIncome: 'explicabo',
-                    LocationIncomeName: 'ipsum',
-                    IsPolitician: 'adipisci'
-                },
-                {
-                    Id: 347,
-                    CorporationId: 'ratione',
-                    CommitteeType: 'labore',
-                    CommitteeTypeName: 'veniam',
-                    IdCard: 'accusamus',
-                    OccupationTypeName: 'cupiditate',
-                    BusinessType: 'natus',
-                    LocationIncome: 'error',
-                    LocationIncomeName: 'ex',
-                    IsPolitician: 'ex'
-                },
-                {
-                    Id: 333,
-                    CorporationId: 'sit',
-                    CommitteeType: 'sed',
-                    CommitteeTypeName: 'cum',
-                    IdCard: 'aut',
-                    OccupationTypeName: 'quo',
-                    BusinessType: 'omnis',
-                    LocationIncome: 'officiis',
-                    LocationIncomeName: 'sed',
-                    IsPolitician: 'suscipit'
-                },
-                {
-                    Id: 259,
-                    CorporationId: 'voluptatem',
-                    CommitteeType: 'possimus',
-                    CommitteeTypeName: 'et',
-                    IdCard: 'libero',
-                    OccupationTypeName: 'cumque',
-                    BusinessType: 'est',
-                    LocationIncome: 'illo',
-                    LocationIncomeName: 'nobis',
-                    IsPolitician: 'magnam'
-                },
-                {
-                    Id: 980,
-                    CorporationId: 'ex',
-                    CommitteeType: 'dolores',
-                    CommitteeTypeName: 'temporibus',
-                    IdCard: 'quisquam',
-                    OccupationTypeName: 'deserunt',
-                    BusinessType: 'ut',
-                    LocationIncome: 'voluptatum',
-                    LocationIncomeName: 'illum',
-                    IsPolitician: 'perferendis'
-                },
-                {
-                    Id: 653,
-                    CorporationId: 'asperiores',
-                    CommitteeType: 'aut',
-                    CommitteeTypeName: 'omnis',
-                    IdCard: 'culpa',
-                    OccupationTypeName: 'quae',
-                    BusinessType: 'quo',
-                    LocationIncome: 'perspiciatis',
-                    LocationIncomeName: 'occaecati',
-                    IsPolitician: 'fugit'
-                },
-                {
-                    Id: 695,
-                    CorporationId: 'laudantium',
-                    CommitteeType: 'qui',
-                    CommitteeTypeName: 'illum',
-                    IdCard: 'id',
-                    OccupationTypeName: 'mollitia',
-                    BusinessType: 'rerum',
-                    LocationIncome: 'inventore',
-                    LocationIncomeName: 'reiciendis',
-                    IsPolitician: 'fuga'
-                },
-                {
-                    Id: 615,
-                    CorporationId: 'est',
-                    CommitteeType: 'impedit',
-                    CommitteeTypeName: 'eos',
-                    IdCard: 'omnis',
-                    OccupationTypeName: 'quia',
-                    BusinessType: 'aspernatur',
-                    LocationIncome: 'ad',
-                    LocationIncomeName: 'asperiores',
-                    IsPolitician: 'soluta'
-                },
-                {
-                    Id: 767,
-                    CorporationId: 'dolor',
-                    CommitteeType: 'repellat',
-                    CommitteeTypeName: 'harum',
-                    IdCard: 'sunt',
-                    OccupationTypeName: 'sed',
-                    BusinessType: 'nihil',
-                    LocationIncome: 'voluptates',
-                    LocationIncomeName: 'suscipit',
-                    IsPolitician: 'nesciunt'
-                },
-                {
-                    Id: 280,
-                    CorporationId: 'ex',
-                    CommitteeType: 'accusantium',
-                    CommitteeTypeName: 'maiores',
-                    IdCard: 'perspiciatis',
-                    OccupationTypeName: 'et',
-                    BusinessType: 'similique',
-                    LocationIncome: 'ipsum',
-                    LocationIncomeName: 'adipisci',
-                    IsPolitician: 'voluptatem'
-                },
-                {
-                    Id: 122,
-                    CorporationId: 'et',
-                    CommitteeType: 'consequatur',
-                    CommitteeTypeName: 'iusto',
-                    IdCard: 'velit',
-                    OccupationTypeName: 'iusto',
-                    BusinessType: 'aperiam',
-                    LocationIncome: 'voluptatem',
-                    LocationIncomeName: 'dolor',
-                    IsPolitician: 'soluta'
-                },
-                {
-                    Id: 534,
-                    CorporationId: 'voluptatem',
-                    CommitteeType: 'et',
-                    CommitteeTypeName: 'voluptatem',
-                    IdCard: 'ipsa',
-                    OccupationTypeName: 'aut',
-                    BusinessType: 'deleniti',
-                    LocationIncome: 'nisi',
-                    LocationIncomeName: 'impedit',
-                    IsPolitician: 'eum'
-                },
-                {
-                    Id: 92,
-                    CorporationId: 'vel',
-                    CommitteeType: 'eum',
-                    CommitteeTypeName: 'aut',
-                    IdCard: 'aliquam',
-                    OccupationTypeName: 'asperiores',
-                    BusinessType: 'voluptates',
-                    LocationIncome: 'voluptas',
-                    LocationIncomeName: 'maxime',
-                    IsPolitician: 'aperiam'
-                },
-                {
-                    Id: 647,
-                    CorporationId: 'iusto',
-                    CommitteeType: 'eligendi',
-                    CommitteeTypeName: 'unde',
-                    IdCard: 'earum',
-                    OccupationTypeName: 'est',
-                    BusinessType: 'aut',
-                    LocationIncome: 'et',
-                    LocationIncomeName: 'sit',
-                    IsPolitician: 'ipsum'
-                },
-                {
-                    Id: 528,
-                    CorporationId: 'et',
-                    CommitteeType: 'doloribus',
-                    CommitteeTypeName: 'occaecati',
-                    IdCard: 'consequatur',
-                    OccupationTypeName: 'quibusdam',
-                    BusinessType: 'nesciunt',
-                    LocationIncome: 'occaecati',
-                    LocationIncomeName: 'provident',
-                    IsPolitician: 'est'
-                },
-                {
-                    Id: 352,
-                    CorporationId: 'ullam',
-                    CommitteeType: 'suscipit',
-                    CommitteeTypeName: 'quia',
-                    IdCard: 'et',
-                    OccupationTypeName: 'molestiae',
-                    BusinessType: 'porro',
-                    LocationIncome: 'minus',
-                    LocationIncomeName: 'explicabo',
-                    IsPolitician: 'est'
-                },
-                {
-                    Id: 273,
-                    CorporationId: 'laborum',
-                    CommitteeType: 'perspiciatis',
-                    CommitteeTypeName: 'et',
-                    IdCard: 'labore',
-                    OccupationTypeName: 'omnis',
-                    BusinessType: 'nisi',
-                    LocationIncome: 'voluptatem',
-                    LocationIncomeName: 'deserunt',
-                    IsPolitician: 'inventore'
-                },
-                {
-                    Id: 95,
-                    CorporationId: 'vero',
-                    CommitteeType: 'quos',
-                    CommitteeTypeName: 'officiis',
-                    IdCard: 'est',
-                    OccupationTypeName: 'veritatis',
-                    BusinessType: 'ducimus',
-                    LocationIncome: 'ipsa',
-                    LocationIncomeName: 'nobis',
-                    IsPolitician: 'doloribus'
-                },
-                {
-                    Id: 136,
-                    CorporationId: 'adipisci',
-                    CommitteeType: 'officia',
-                    CommitteeTypeName: 'neque',
-                    IdCard: 'quidem',
-                    OccupationTypeName: 'excepturi',
-                    BusinessType: 'impedit',
-                    LocationIncome: 'dolores',
-                    LocationIncomeName: 'quidem',
-                    IsPolitician: 'hic'
-                },
-                {
-                    Id: 704,
-                    CorporationId: 'commodi',
-                    CommitteeType: 'officia',
-                    CommitteeTypeName: 'sapiente',
-                    IdCard: 'voluptates',
-                    OccupationTypeName: 'hic',
-                    BusinessType: 'quo',
-                    LocationIncome: 'vitae',
-                    LocationIncomeName: 'consequatur',
-                    IsPolitician: 'id'
-                },
-                {
-                    Id: 332,
-                    CorporationId: 'quis',
-                    CommitteeType: 'nesciunt',
-                    CommitteeTypeName: 'sapiente',
-                    IdCard: 'dignissimos',
-                    OccupationTypeName: 'aut',
-                    BusinessType: 'adipisci',
-                    LocationIncome: 'natus',
-                    LocationIncomeName: 'deserunt',
-                    IsPolitician: 'libero'
-                },
-                {
-                    Id: 906,
-                    CorporationId: 'ipsum',
-                    CommitteeType: 'rerum',
-                    CommitteeTypeName: 'sit',
-                    IdCard: 'atque',
-                    OccupationTypeName: 'necessitatibus',
-                    BusinessType: 'odio',
-                    LocationIncome: 'itaque',
-                    LocationIncomeName: 'officia',
-                    IsPolitician: 'tenetur'
-                },
-                {
-                    Id: 610,
-                    CorporationId: 'cupiditate',
-                    CommitteeType: 'voluptatem',
-                    CommitteeTypeName: 'nisi',
-                    IdCard: 'ut',
-                    OccupationTypeName: 'aperiam',
-                    BusinessType: 'blanditiis',
-                    LocationIncome: 'culpa',
-                    LocationIncomeName: 'ad',
-                    IsPolitician: 'voluptas'
-                },
-                {
-                    Id: 438,
-                    CorporationId: 'quia',
-                    CommitteeType: 'et',
-                    CommitteeTypeName: 'accusantium',
-                    IdCard: 'ipsum',
-                    OccupationTypeName: 'molestiae',
-                    BusinessType: 'blanditiis',
-                    LocationIncome: 'est',
-                    LocationIncomeName: 'voluptates',
-                    IsPolitician: 'adipisci'
-                }
-            ],
             proxy: {
-                type: 'memory'
+                type: 'rest',
+                url: 'api/Shareholders/GetShareholdersGridView',
+                reader: {
+                    type: 'json',
+                    rootProperty: 'data'
+                },
+                api: {
+                    destroy: '/api/Shareholders'
+                }
             }
-        }
+        },
+        shareholderForm: {
+            model: 'RiskManagement.model.ShareholdersModel',
+            autoLoad:true,
+            proxy: {
+                type: 'rest',
+                url: 'api/Shareholders',
+                reader: {
+                    type: 'json'
+                }
+            }
+        },
+
     }
 
 });

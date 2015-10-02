@@ -23,11 +23,14 @@ Ext.define('RiskManagement.model.Combo.OccupationTypeModel', {
 
     fields: [
         {
-            type: 'int',
-            name: 'id'
+            //type: 'int',
+            name: 'Id'
         },
         {
             name: 'Name'
+        },
+        {
+            name: 'GroupId'
         }
     ]
 });

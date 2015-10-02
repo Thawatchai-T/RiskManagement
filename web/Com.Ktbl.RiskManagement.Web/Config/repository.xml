@@ -1,14 +1,85 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <objects xmlns="http://www.springframework.net" default-autowire="constructor">
   
-  <!--<object id="sessionFactory"
+  <!--<object id="sessionFactoryCCI"
         type="NHibernate.ISessionFactory, NHibernate"
-        factory-object="nhHelpersFactory"
-        factory-method="CreateSessionFactory" singleton="true"/>
+        factory-object="nhHelpersFactoryCCI"
+        factory-method="CreateSessionFactory" singleton="true"/>-->
 
-  <object id="usersAuthorizeRepository"
-              type="KTBLeasing.FrontLeasing.Mapping.Orcl.Reposotory.UsersAuthorizeRepository, KTBLeasing.FrontLeasing.Mapping.Orcl">
-    <property name="SessionFactory"  ref="sessionFactory"/>
-  </object>-->
+  <object id="nhHelpersFactoryRisk"
+        type="NHibernate.ISessionFactory, NHibernate"
+        factory-object="nhHelpersFactoryNHP"
+        factory-method="CreateSessionFactoryRisk" singleton="false"/>
+
+  <object id="sessionFactoryNHP"
+        type="NHibernate.ISessionFactory, NHibernate"
+        factory-object="nhHelpersFactoryNHP"
+        factory-method="CreateSessionFactory" singleton="false"/>
+
+  <object id="sessionFactoryCCI"
+        type="NHibernate.ISessionFactory, NHibernate"
+        factory-object="nhHelpersFactoryNHP"
+        factory-method="CreateSessionFactoryCCI" singleton="false"/>
+  
+<!--cci Object-->
+  <object id="cciSourceRepository"
+              type="Com.Ktbl.RiskManagement.Map.Repository.CCISourceRepository, Com.Ktbl.RiskManagement.Map">
+    <property name="SessionFactory"  ref="sessionFactoryCCI"/>
+  </object>
+  
+  <object id="politicianRelationshipRepository"
+              type="Com.Ktbl.RiskManagement.Map.Repository.PoliticianRelationshipRepository, Com.Ktbl.RiskManagement.Map">
+    <property name="SessionFactory"  ref="sessionFactoryCCI"/>
+  </object>
+  
+<!--nhi Object-->
+  <object id="occupationRepository"
+              type="Com.Ktbl.RiskManagement.Map.Repository.OccupationRepository, Com.Ktbl.RiskManagement.Map">
+    <property name="SessionFactory"  ref="sessionFactoryNHP"/>
+  </object>
+
+  <object id="positionRepository"
+              type="Com.Ktbl.RiskManagement.Map.Repository.PositionRepository, Com.Ktbl.RiskManagement.Map">
+    <property name="SessionFactory"  ref="sessionFactoryNHP"/>
+  </object>
+ 
+  <!--Risk-->
+  <object id="countryRepository"
+                type="Com.Ktbl.RiskManagement.Map.Repository.CountryRepository, Com.Ktbl.RiskManagement.Map">
+    <property name="SessionFactory"  ref="nhHelpersFactoryRisk"/>
+  </object>
+  <!--Personal-->
+  <object id="personalRepository"
+                type="Com.Ktbl.RiskManagement.Map.Repository.PersonalRepository, Com.Ktbl.RiskManagement.Map">
+    <property name="SessionFactory"  ref="nhHelpersFactoryRisk"/>
+  </object>
+  <!--DecisionTable-->
+  <object id="decisionTable"
+                type="Com.Ktbl.RiskManagement.Map.Repository.DecisionTableRepository, Com.Ktbl.RiskManagement.Map">
+    <property name="SessionFactory"  ref="nhHelpersFactoryRisk"/>
+  </object>
+  <!--Personal-->
+  <object id="corporationRepository"
+                type="Com.Ktbl.RiskManagement.Map.Repository.CorporationRepository, Com.Ktbl.RiskManagement.Map">
+    <property name="SessionFactory"  ref="nhHelpersFactoryRisk"/>
+  </object>
+
+  <!--Personal-->
+  <object id="shareholderRepository"
+                type="Com.Ktbl.RiskManagement.Map.Repository.ShareholderRepository, Com.Ktbl.RiskManagement.Map">
+    <property name="SessionFactory"  ref="nhHelpersFactoryRisk"/>
+  </object>
+
+  <!--Common-->
+  <object id="commonRepository"
+                type="Com.Ktbl.RiskManagement.Map.Repository.CommonsRepository, Com.Ktbl.RiskManagement.Map">
+    <property name="SessionFactory"  ref="nhHelpersFactoryRisk"/>
+  </object>
+
+  <!--Common-->
+  <object id="applicationNameRepository"
+                type="Com.Ktbl.RiskManagement.Map.Repository.ApplicationNameRepository, Com.Ktbl.RiskManagement.Map">
+    <property name="SessionFactory"  ref="nhHelpersFactoryRisk"/>
+  </object>
   
 </objects>

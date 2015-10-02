@@ -64,7 +64,6 @@ Ext.define('RiskManagement.model.ShareholdersModel', {
             name: 'OccupationType'
         },
         {
-            type: 'string',
             name: 'Position'
         },
         {
@@ -80,7 +79,7 @@ Ext.define('RiskManagement.model.ShareholdersModel', {
             name: 'CurrentlyLives'
         },
         {
-            name: 'IsPolitician'
+            name: 'PoliticianRelationship'
         },
         {
             name: 'File1'

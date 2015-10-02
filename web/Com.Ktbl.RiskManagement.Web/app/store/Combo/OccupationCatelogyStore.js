@@ -28,22 +28,12 @@ Ext.define('RiskManagement.store.Combo.OccupationCatelogyStore', {
         me.callParent([Ext.apply({
             storeId: 'Combo.OccupationCatelogyStore',
             model: 'RiskManagement.model.Combo.OccupationCatelogyModel',
-            data: [
-                {
-                    Id: 777,
-                    Name: 'การโรงแรม'
-                },
-                {
-                    Id: 856,
-                    Name: 'ut'
-                },
-                {
-                    Id: 495,
-                    Name: 'est'
-                }
-            ],
             proxy: {
-                type: 'memory'
+                type: 'rest',
+                url: 'api/common/GetOccupation?type=catelogy',
+                reader: {
+                    type: 'json'
+                }
             }
         }, cfg)]);
     }
