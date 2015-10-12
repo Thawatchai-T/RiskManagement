@@ -38,7 +38,8 @@ Ext.application({
         'ShareholdersGridView',
         'Combo.RegionModel',
         'Combo.PoliticianRelationshipModel',
-        'Combo.RegistrationTypeModel'
+        'Combo.RegistrationTypeModel',
+        'MainUploads'
     ],
     stores: [
         'Combo.OccupationCatelogyStore',
@@ -70,7 +71,7 @@ Ext.application({
     launch: function () {
         // Ext.create('RiskManagement.view.MainView');
         console.log(window.Page);
-        if (!window.Status && window.Page != "Admin" ) {
+        if (!window.Status && window.Page != "admin" ) {
 
             Ext.Msg.alert('App not found', 'คุณไม่มีสิทธิใช้งานระบบนี้');
         }
@@ -84,8 +85,8 @@ Ext.application({
             Ext.create('RiskManagement.view.CorporationlForm', { renderTo: Ext.getBody() });
             console.log("Corporation");
 
-        } else if (window.Page === "Admin") {
-            Ext.create('RiskManagement.view.Admin.Main', { renderTo: Ext.getBody() });
+        } else if (window.Page === "admin") {
+            Ext.create('RiskManagement.view.Admin.Tab.UploadFile', { renderTo: Ext.getBody() }).show();
             console.log("Admin");
         }
         

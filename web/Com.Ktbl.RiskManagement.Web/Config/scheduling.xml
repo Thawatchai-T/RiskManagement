@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net" default-autowire="constructor">
+  
+  
+  <object name="exampleJob" type="Spring.Scheduling.Quartz.JobDetailObject, Spring.Scheduling.Quartz">
+    <property name="JobType" value="Com.Ktbl.RiskManagement.Process.BatchJobs, Com.Ktbl.RiskManagement.Process" />
+     <!--We can inject values through JobDataMap--> 
+    <property name="JobDataAsMap">
+      <dictionary>
+        <entry key="UserName" value="Alexandre" />
+      </dictionary>
+    </property>
+  </object>
+ 
+  <object id="cronTrigger" type="Spring.Scheduling.Quartz.CronTriggerObject, Spring.Scheduling.Quartz">
+    <!--<property name="jobDetail" ref="exampleJob" />-->
+    <!-- run every 20 second of minute -->
+    <property name="cronExpressionString" value="0/20 * * * * ?" />
+  </object>
+
+  <object type="Spring.Scheduling.Quartz.SchedulerFactoryObject, Spring.Scheduling.Quartz">
+    <property name="triggers">
+      <list>
+        <ref object="cronTrigger" />
+      </list>
+    </property>
+  </object>
+
+</objects>

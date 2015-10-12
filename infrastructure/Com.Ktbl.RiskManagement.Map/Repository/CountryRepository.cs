@@ -85,7 +85,7 @@ namespace Com.Ktbl.RiskManagement.Map.Repository
 
             using(var session = SessionFactory.OpenStatelessSession())
             {
-                var result = session.QueryOver<CountryDomain>().Where(x=>x.Id == id && x.IsActive == true && x.Levels>1).List<CountryDomain>();
+                var result = session.QueryOver<CountryDomain>().Where(x=>x.Id == id && x.IsActive == true && x.Levels>0).List<CountryDomain>();
 
                 return result.Count > 0 ? true : false;
 

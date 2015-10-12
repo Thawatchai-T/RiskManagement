@@ -161,11 +161,11 @@ namespace Com.Ktbl.RiskManagement.Web.Controllers
 
 
                 }
-
-                //insert inot risktable
-                PersonalRepository.Insert(objdto);
-
+                
                 var risk = MainProcess.TakeRisksPersonal(objdto);
+                
+                //insert risk table
+                PersonalRepository.Insert(risk);
 
                 return new HttpResponseMessage()
                 {
@@ -181,13 +181,33 @@ namespace Com.Ktbl.RiskManagement.Web.Controllers
             }
         }
 
-        public void Check (PersonalModel entity){
-        
+        public List<PersonalModel> GetCheck(string type)
+        {
+
+            if (type.Equals("r2"))
+            {
+               //return this.PersonalRepository.ChaeckTypeR2();
+                return null;
+            }
+            else
+            {
+                return null;
+            }
            //check cci 
             bool cciStatus = this.CCIRepository.CheckCCI("", "", "");
             
         }
 
+        public void GetResult(string key,string user,string requestno){
+            try
+            {
 
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+        }
     }
 }

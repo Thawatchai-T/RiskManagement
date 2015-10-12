@@ -20,6 +20,11 @@
         type="NHibernate.ISessionFactory, NHibernate"
         factory-object="nhHelpersFactoryNHP"
         factory-method="CreateSessionFactoryCCI" singleton="false"/>
+
+  <object id="sessionFactoryBatchTB"
+        type="NHibernate.ISessionFactory, NHibernate"
+        factory-object="nhHelpersFactoryNHP"
+        factory-method="CreateSessionFactoryBatchTB" singleton="false"/>
   
 <!--cci Object-->
   <object id="cciSourceRepository"
@@ -76,10 +81,22 @@
     <property name="SessionFactory"  ref="nhHelpersFactoryRisk"/>
   </object>
 
-  <!--Common-->
+  <!--ApplicationNameRepository-->
   <object id="applicationNameRepository"
                 type="Com.Ktbl.RiskManagement.Map.Repository.ApplicationNameRepository, Com.Ktbl.RiskManagement.Map">
     <property name="SessionFactory"  ref="nhHelpersFactoryRisk"/>
+  </object>
+
+  <!--BatchFileRepository-->
+  <object id="batchFileRepository"
+                type="Com.Ktbl.RiskManagement.Map.Repository.BatchFileRepository, Com.Ktbl.RiskManagement.Map">
+    <property name="SessionFactory"  ref="nhHelpersFactoryRisk"/>
+  </object>
+
+  <!--BatchTBRepository-->
+  <object id="batchTBRepository"
+                type="Com.Ktbl.RiskManagement.Map.Repository.BatchTBRepository, Com.Ktbl.RiskManagement.Map">
+    <property name="SessionFactory"  ref="sessionFactoryBatchTB"/>
   </object>
   
 </objects>

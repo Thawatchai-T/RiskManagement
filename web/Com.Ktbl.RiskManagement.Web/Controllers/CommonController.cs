@@ -273,25 +273,25 @@ namespace Com.Ktbl.RiskManagement.Web.Controllers
             }
         }
 
-        public List<CommonModel> GetTitleName(){
+        public List<StandardCodeDomain> GetTitleName(){
             try
             {
-                var data = new CommonModel();
-                return data.GenDummy(30);
+                var result = this.CommonRepository.GetTitleName();
+                return result;
             }
             catch (Exception ex)
             {
                 Logger.Error(ex);
-                return new List<CommonModel>();
+                return new List<StandardCodeDomain>();
             }
         }
 
 
-        public JArray GetPoliticianRelationship()
-        {
-            var list = this.PoliticianRelationshipRepository.GetAll();
-            return JArray.Parse(JsonConvert.SerializeObject(list));
-        }
+        //public JArray GetPoliticianRelationship()
+        //{
+        //    var list = this.PoliticianRelationshipRepository.GetAll();
+        //    return JArray.Parse(JsonConvert.SerializeObject(list));
+        //}
 
         #endregion
         public List<CommonModel> GetRegistrationType(){
@@ -307,6 +307,28 @@ namespace Com.Ktbl.RiskManagement.Web.Controllers
                 return result;
             }
             catch (Exception)
+            {
+                
+                throw;
+            }
+       }
+
+
+
+        public List<CommonModel> GetPoliticianRelationship()
+        {
+
+            try
+            {
+                var result = this.CommonRepository.GetRelationship().Select(x => new CommonModel
+                {
+                    Id = x.Id,
+                    IsActive = x.IsActive,
+                    Name = x.Name
+                }).ToList();
+                return result;
+            }
+            catch (Exception ex)
             {
                 
                 throw;

@@ -10,12 +10,13 @@ namespace Com.Ktbl.RiskManagement.Process
     public class MainProcess
     {
         #region Repository
-        private IPoliticianRelationshipRepository PoliticianRepository{get;set;}
+        private IPoliticianRelationshipRepository PoliticianRepository {get;set;}
         private ICCISourceRepository CCISourceRepository { get; set; }
         private IDecisionTableRepository DecisionTableRepository { get; set; }
         private ICountryRepository CountryRepository { get; set; }
         private IShareholderRepository ShareholderRepository { get; set; }
         private ICorporationRepository CorporationRepository { get; set; }
+        private ICommonsRepository CommonsRepository { get; set; }
         #endregion
         public List<DecisionTable> DecisionTable { get; set; }
         public DecisionTable DecisionEntity { get; set; }
@@ -136,17 +137,28 @@ namespace Com.Ktbl.RiskManagement.Process
 
         }
 
+
         public PersonalModel TakeRisksPersonal(PersonalModel objdto)
         {
             try
             {
                 Random gen = new Random();
+                bool amlo = false;
+
+                var isPoliticianRelationship = CommonsRepository.CheckRelationship(objdto.PoliticianRelationship);
+
+                //PEPS
+                var peps = (isPoliticianRelationship) ? true : PoliticianRepository.CheckPolitician(objdto.FirstName, objdto.LastName);
                 
-                var amlo = CCISourceRepository.CheckCCI(objdto.CitizenId, objdto.FirstName, objdto.LastName);
-                var peps = PoliticianRepository.CheckPolitician(objdto.FirstName, objdto.LastName);
+
+                //check AMLO is same CCI
+                amlo = CCISourceRepository.CheckCCI(objdto.CitizenId, objdto.FirstName, objdto.LastName);
+
+
                 //ref HR07 in table OccupationCatelogy
-                var occupation = (gen.Next(100) < 20) ? true : false;
-                bool country = this.CountryRepository.CheckCountry(objdto.SourceOfIncome);
+                var occupation = CommonsRepository.CheckBusinessType(objdto.BusinessId);
+
+                bool country = this.CountryRepository.CheckCountry(objdto.LocationOfIncome);
 
                 DecisionEntity = new DecisionTable
                 {
@@ -168,6 +180,7 @@ namespace Com.Ktbl.RiskManagement.Process
             }
             //throw new NotImplementedException();
         }
+
         /// <summary>
         /// 1. นิติบุคคลตามที่กำหนดในเอกสารแนบ 1 เป็น R1
         /// 2. 16-25 check register company in thai? 
@@ -267,4 +280,25 @@ namespace Com.Ktbl.RiskManagement.Process
             }
         }
     }
+
+    //[Flags]
+    //public enum DecisionType
+    //{
+    //    R1 = 0x0,
+    //    R2o = 0x1,
+    //    R2c = 0x2,
+    //    R2oc = 0x3,
+    //    R34 = 0x4,
+    //    R3a0 = 0x5,
+    //    R3ac = 0x6,
+    //    R2aoc = 0x7,
+    //    R3p = 0x8,
+    //    R3po = 0x9,
+    //    R3pc = 0x10,
+    //    R3poc = 0x11,
+    //    R3pa = 0x12,
+    //    R3pa0 = 0x13,
+    //    R3pac = 0x14,
+    //    P3paoc = 0x15
+    //}
 }

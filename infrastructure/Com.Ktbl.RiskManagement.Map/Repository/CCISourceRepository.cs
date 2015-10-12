@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Com.Ktbl.RiskManagement.Domain;
 using Com.Ktbl.RiskManagement.Domain.Common;
+using NHibernate.Criterion;
 
 namespace Com.Ktbl.RiskManagement.Map.Repository
 {
@@ -83,15 +84,26 @@ namespace Com.Ktbl.RiskManagement.Map.Repository
 
         public bool CheckCCI(string cid, string fname, string lname){
             
-            string fullname = string.Format("{0} {1}",fname,lname);
+            string fullname = string.Format("{0} {1}",fname,lname).ToLower();
 
             using( var session = SessionFactory.OpenStatelessSession())
             {
-                var result = session.QueryOver<CCISourceDomain>().Where(x =>
-                    (x.SingleStringName == fullname && x.FirstName == fname)
-                    ||
-                    (x.SingleStringName == fullname && x.Surname == lname)).List<CCISourceDomain>();
-                return (result.Count > 0) ? true : false;
+                try
+                {
+                    var result = session.QueryOver<CCISourceDomain>().Where(x => x.Id  == cid && x.SingleStringName == fullname).List<CCISourceDomain>();
+                    //.Where(x =>
+                    //(x.SingleStringName.ToLower() == fullname.ToLower() && x.FirstName.ToLower() == fname.ToLower())
+                    //||
+                    //(x.SingleStringName.ToLower() == fullname.ToLower() && x.Surname.ToLower() == lname.ToLower())).List<CCISourceDomain>();
+                    return (result.Count > 0) ? true : false;
+
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex);
+                    throw;
+                }
+               
             }
         }
     }

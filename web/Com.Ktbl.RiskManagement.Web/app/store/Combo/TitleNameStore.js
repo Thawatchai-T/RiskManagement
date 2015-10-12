@@ -28,6 +28,7 @@ Ext.define('RiskManagement.store.Combo.TitleNameStore', {
         me.callParent([Ext.apply({
             storeId: 'Combo.TitleNameStore',
             model: 'RiskManagement.model.TitleNameModel',
+            autoLoad: true,
             proxy: {
                 type: 'rest',
                 url: 'api/common/GetTitleName',

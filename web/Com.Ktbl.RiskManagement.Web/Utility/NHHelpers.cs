@@ -23,6 +23,10 @@ namespace Com.Ktbl.RiskManagement.Web.Utility
         private string Database { get; set; }
         private string DatabaseCCI { get; set; }
         private string DatabaseRISK { get; set; }
+
+        private string DatabaseBatchTB { get; set; }
+        private string ServerBatchTB { get; set; }
+
  
         public ISessionFactory CreateSessionFactory()
         {
@@ -64,7 +68,7 @@ namespace Com.Ktbl.RiskManagement.Web.Utility
                             .Password(Password)
                         )
                     )
-                    .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CommonMap>())
+                    .Mappings(m => m.FluentMappings.AddFromAssemblyOf<PositionMap>())
                     .ExposeConfiguration(c => c.SetProperty("current_session_context_class", "thread_static"))
                     .BuildSessionFactory();
                 return sessionf;
@@ -86,6 +90,32 @@ namespace Com.Ktbl.RiskManagement.Web.Utility
                         .ConnectionString(c => c
                             .Server(ServerRisk)
                             .Database(DatabaseRISK)
+                            .Username(Username)
+                            .Password(Password)
+                        )
+                    )
+                    .Mappings(m => m.FluentMappings.AddFromAssemblyOf<CommonMap>())
+                    .ExposeConfiguration(c => c.SetProperty("current_session_context_class", "thread_static"))
+                    .BuildSessionFactory();
+                return sessionf;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message); //ex.Message;
+                //  return null;
+            }
+        }
+
+        public ISessionFactory CreateSessionFactoryBatchTB()
+        {
+            try
+            {
+                var sessionf = Fluently.Configure()
+                    //.ProxyFactoryFactory<ProxyFactoryFactory>()
+                    .Database(MsSqlConfiguration.MsSql2008
+                        .ConnectionString(c => c
+                            .Server(ServerBatchTB)
+                            .Database(DatabaseBatchTB)
                             .Username(Username)
                             .Password(Password)
                         )

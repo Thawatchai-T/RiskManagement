@@ -130,6 +130,8 @@ Ext.define('RiskManagement.view.PersonalFormViewController', {
         User = refs.user,
         RequestNo = refs.requestno;
 
+         console.log(window.Userid);
+
         OccupationCatelogyField.setValue(window.OccupationCatelogyId);
 
         OccupationGroupField.setValue(window.OccupationGroupId);
@@ -139,8 +141,8 @@ Ext.define('RiskManagement.view.PersonalFormViewController', {
         PositionField.setValue(window.PositionId);
 
         AppKey.setValue(window.Key)
-        User.setValue(window.User);
-        RequestNo.setValue(window.RequestNo);
+        User.setValue(window.Userid);
+        RequestNo.setValue(window.RequestNos);
 
 
     },

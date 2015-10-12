@@ -62,7 +62,7 @@ Ext.define('RiskManagement.view.PersonalForm', {
                 {
                     xtype: 'hiddenfield',
                     reference: 'user',
-                    name: 'User'
+                    name: 'UserId'
                 },
                 {
                     xtype: 'hiddenfield',
@@ -78,15 +78,15 @@ Ext.define('RiskManagement.view.PersonalForm', {
                     readOnly: true
                 },
                 {
-                    xtype: 'numberfield',
+                    xtype: 'textfield',
                     colspan: 2,
-                    width: 338,
+                    width: 450,
                     fieldLabel: 'เลขที่บัตรประชาชน',
                     name: 'CitizenId',
                     allowBlank: false,
-                    emptyText: ' 1234567890123',
-                    maxLength: 13,
-                    minLength: 13
+                    emptyText: ' บัตรประชาชน หรือ หนังสือเดินทาง',
+                    //maxLength: 13,
+                    //minLength: 1
                 },
                 {
                     xtype: 'fieldcontainer',
@@ -101,6 +101,7 @@ Ext.define('RiskManagement.view.PersonalForm', {
                             width: 93,
                             fieldLabel: 'คำนำหน้าชื่อ',
                             hideLabel: true,
+                            queryMode: 'local',
                             name: 'TitleId',
                             allowBlank: false,
                             emptyText: '[ คำนำหน้า ]',
@@ -194,6 +195,7 @@ Ext.define('RiskManagement.view.PersonalForm', {
                     name: 'BusinessId',
                     emptyText: '[ เลือกประเภทธุรกิจ ]',
                     displayField: 'Name',
+                    queryMode: 'local',
                     store: 'Combo.BusinessTypeStore',
                     valueField: 'Id'
                 },
@@ -211,6 +213,7 @@ Ext.define('RiskManagement.view.PersonalForm', {
                     fieldLabel: 'แหล่งที่ตั้งของรายได้',
                     name: 'LocationOfIncome',
                     emptyText: '[ แหล่งที่ตั้งของรายได้ ]',
+                    queryMode: 'local',
                     displayField: 'Name',
                     store: 'Combo.RegionStore',
                     valueField: 'Id'
@@ -221,6 +224,7 @@ Ext.define('RiskManagement.view.PersonalForm', {
                     name: 'LiveInCountry',
                     emptyText: '[ เลือกประเทศ ]',
                     displayField: 'Name',
+                    queryMode: 'local',
                     store: 'Combo.RegionStore',
                     valueField: 'Id'
                 },
@@ -231,6 +235,7 @@ Ext.define('RiskManagement.view.PersonalForm', {
                     colspan: 2,
                     emptyText: '[ ความสัมธ์กับนักการเมือง ]',
                     displayField: 'Name',
+                    queryMode: 'local',
                     store: 'Combo.PoliticianRelationshipStore',
                     valueField: 'Id'
                 },
@@ -277,15 +282,16 @@ Ext.define('RiskManagement.view.PersonalForm', {
                         {
                             xtype: 'radiofield',
                             name: 'IsAccept',
-                            boxLabel: 'Accept',
+                            boxLabel: 'ยอมรับ',
                             varlue: 0,
                             margin: '0 5 0 5'
                         },
                         {
                             xtype: 'radiofield',
                             name: 'IsAccept',
-                            boxLabel: 'notAccept',
+                            boxLabel: 'ไม่ยอมรับ',
                             checked: true,
+                            width: 150,
                             varlue:0,
                             margin: '0 5 0 5'
                         }

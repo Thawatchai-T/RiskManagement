@@ -44,10 +44,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationNameDomain.cs" />
+    <Compile Include="BatchRiskDomain.cs" />
+    <Compile Include="BatchtbDomain.cs" />
+    <Compile Include="BatchTBViewModel.cs" />
     <Compile Include="CCISourceDomain.cs" />
+    <Compile Include="Common\RelationshipDomain.cs" />
     <Compile Include="Common\RegistrationTypeDomain.cs" />
     <Compile Include="Common\CountryDomain.cs" />
     <Compile Include="Common\PoliticianRelationshipDomain.cs" />
+    <Compile Include="Common\StandardCodeDomain.cs" />
+    <Compile Include="CheckRiskR3Model.cs" />
+    <Compile Include="CheckRiskR2Model.cs" />
+    <Compile Include="UploadHeaderDomain.cs" />
     <Compile Include="ViewShareholdersDomain.cs" />
     <Compile Include="CorporationDomain.cs" />
     <Compile Include="Db2Linq.cs" />

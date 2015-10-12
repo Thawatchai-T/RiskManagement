@@ -23,11 +23,13 @@ Ext.define('RiskManagement.model.TitleNameModel', {
 
     fields: [
         {
-            type: 'int',
-            name: 'Id'
+            //type: 'int',
+            name: 'Id',
+            mapping: 'StandardCode'
         },
         {
-            name: 'Name'
+            name: 'Name',
+            mapping: 'StandardName'
         }
     ]
 });

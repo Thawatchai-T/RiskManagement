@@ -15,7 +15,9 @@
     <!-- share-->
     <property name="Username" value="sa"/>
     <property name="Password" value="ktblitadmin"/>
-    
+    <!--BatchTB -->
+    <property name="ServerBatchTB" value="221.23.0.25"/>
+    <property name="DatabaseBatchTB" value="Batchtb"/>
   </object>
 
   <!--Com.Ktbl.RiskManagement.Domain.PersonalModel-->
@@ -32,7 +34,9 @@
     <property name="DecisionEntity" ref="decisionTable-model"/>
     <property name="ShareholderRepository" ref="shareholderRepository"/>
     <property name="CorporationRepository" ref="corporationRepository"/>
+    <property name="CommonsRepository" ref="commonRepository"/>
     
+
   </object>
   
 </objects>

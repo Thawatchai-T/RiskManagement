@@ -44,6 +44,12 @@
     <property name="MainProcess"  ref="main-processs" />
   </object>
   
+  <!--ShareholdersController-->
+  <object type="Com.Ktbl.RiskManagement.Web.Controllers.AdminController, Com.Ktbl.RiskManagement.Web" singleton="false" >
+    <property name="BatchFileRepository"  ref="batchFileRepository" />
+    
+  </object>
+  
   <!--db2-->
   <!--<object id="repositorydb2" type="Com.Ktbl.Database.DB2.Repository.Repository, Com.Ktbl.Database.DB2" >
     <constructor-arg index="0" value="IBMDADB2.DB2COPY1"/>

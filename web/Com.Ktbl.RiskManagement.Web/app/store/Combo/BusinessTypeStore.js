@@ -28,6 +28,7 @@ Ext.define('RiskManagement.store.Combo.BusinessTypeStore', {
         me.callParent([Ext.apply({
             storeId: 'Combo.BusinessTypeStore',
             model: 'RiskManagement.model.Combo.BusinessTypeModel',
+            autoLoad: true,
             proxy: {
                 type: 'rest',
                 url: 'api/common/GetBusinessType',

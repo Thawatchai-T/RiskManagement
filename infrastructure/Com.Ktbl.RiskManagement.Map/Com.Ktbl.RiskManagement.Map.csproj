@@ -59,6 +59,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationNameMap.cs" />
+    <Compile Include="BatchRiskMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BatchtbMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CheckRiskR2Map.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CheckRiskR3Map.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Common\BusinessTypeMap.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -66,7 +78,9 @@
     <Compile Include="Common\CommitteeTypeMap.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Common\CommonMap.cs" />
+    <Compile Include="Common\CommonMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Common\RegistrationTypeMap.cs" />
     <Compile Include="Common\CountryMap.cs" />
     <Compile Include="Common\ISicCodeMap.cs">
@@ -94,6 +108,7 @@
     <Compile Include="Common\SourceOfIncomeMap.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Common\StandardCodeMap.cs" />
     <Compile Include="CorporationMap.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -101,6 +116,9 @@
     <Compile Include="Helpers\NHelper.cs" />
     <Compile Include="PersonalMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\BatchFileRepository.cs" />
+    <Compile Include="Repository\BatchTBRepository.cs" />
+    <Compile Include="Repository\CheckRiskRepository.cs" />
     <Compile Include="Repository\CommonsRepository.cs" />
     <Compile Include="Repository\CCISourceRepository.cs" />
     <Compile Include="Repository\ApplicationNameRepository.cs" />
@@ -118,6 +136,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ShareholderMap.cs" />
+    <Compile Include="UploadheaderMap.cs" />
     <Compile Include="ViewShareholderMap.cs" />
   </ItemGroup>
   <ItemGroup>

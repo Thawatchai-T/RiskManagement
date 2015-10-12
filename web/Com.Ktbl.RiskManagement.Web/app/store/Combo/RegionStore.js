@@ -27,6 +27,7 @@ Ext.define('RiskManagement.store.Combo.RegionStore', {
         me.callParent([Ext.apply({
             storeId: 'Combo.RegionStore',
             model: 'RiskManagement.model.Combo.RegionModel',
+            autoLoad: true,
             proxy: {
                 type: 'rest',
                 url: 'api/common/GetRegion',

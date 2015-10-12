@@ -26,11 +26,21 @@ namespace Com.Ktbl.RiskManagement.Domain
        public virtual string Result { get; set; }
        public virtual string Extension1 { get; set; }
        public virtual string Extension2 { get; set; }
-       public virtual string AppId { get; set; }
+       public virtual string AppKey { get; set; }
        public virtual string UserId { get; set; }
        public virtual string RequestNo { get; set; }
-       
-       
+
+
+
+       public virtual string CreateBy { get; set; }
+
+       public virtual DateTime CreateDate { get; set; }
+
+       public virtual string UpdateBy { get; set; }
+
+       public virtual DateTime UpdateDate { get;
+           set;
+       }
     }
 }
 

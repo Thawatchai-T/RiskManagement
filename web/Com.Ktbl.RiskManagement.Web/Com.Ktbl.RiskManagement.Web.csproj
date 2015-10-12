@@ -91,11 +91,22 @@
     <Reference Include="NHibernate">
       <HintPath>..\..\RiskManagementSolution\packages\NHibernate.4.0.3.4000\lib\net40\NHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="Spring.Aop">
-      <HintPath>..\..\RiskManagementSolution\packages\Spring.Aop.2.0.1\lib\net40\Spring.Aop.dll</HintPath>
+    <Reference Include="Spring.Aop, Version=2.0.1.45000, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\RiskManagementSolution\packages\Spring.Aop.2.0.1\lib\net45\Spring.Aop.dll</HintPath>
     </Reference>
     <Reference Include="Spring.Core">
       <HintPath>..\..\RiskManagementSolution\packages\Spring.Core.2.0.1\lib\net40\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data, Version=2.0.1.45000, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\RiskManagementSolution\packages\Spring.Data.2.0.1\lib\net45\Spring.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Scheduling.Quartz">
+      <HintPath>..\..\RiskManagementSolution\packages\Spring.Scheduling.Quartz.1.3.2\lib\net40\Spring.Scheduling.Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Scheduling.Quartz2">
+      <HintPath>..\..\RiskManagementSolution\packages\Spring.Scheduling.Quartz2.2.0.1\lib\net45\Spring.Scheduling.Quartz2.dll</HintPath>
     </Reference>
     <Reference Include="Spring.Web">
       <HintPath>..\..\RiskManagementSolution\packages\Spring.Web.2.0.1\lib\net40\Spring.Web.dll</HintPath>
@@ -204,6 +215,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\CorporationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -237,6 +249,7 @@
     <Content Include="app\model\Combo\PositionModel.js" />
     <Content Include="app\model\Combo\RegionModel.js" />
     <Content Include="app\model\Combo\SourceOfIncomeModel.js" />
+    <Content Include="app\model\MainUploads.js" />
     <Content Include="app\model\CorporationlModel.js" />
     <Content Include="app\model\CurrentlyLivesModel.js" />
     <Content Include="app\model\LoginModel.js" />
@@ -290,6 +303,7 @@
     <Content Include="Config\repository.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Config\scheduling.xml" />
     <Content Include="ext\.sencha\package\Boot.js" />
     <Content Include="ext\.sencha\package\bootstrap-impl.xml" />
     <Content Include="ext\.sencha\package\build-impl.xml" />
@@ -9227,6 +9241,9 @@
     <None Include="ext\packages\sencha-soap\test\specs\test.json" />
     <None Include="ext\version.properties" />
     <Content Include="Log4Net.config" />
+    <None Include="job_scheduling_data_2_0.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\PublishProfiles\Risk.pubxml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>

@@ -28,42 +28,43 @@ Ext.define('RiskManagement.store.Combo.PoliticianRelationshipStore', {
         me.callParent([Ext.apply({
             storeId: 'Combo.BusinessTypeStore',
             model: 'RiskManagement.model.Combo.PoliticianRelationshipModel',
-            data: [
-                {
-                    Id: 1,
-                    Name: 'บิดา'
-                },
-                {
-                    Id: 2,
-                    Name: 'มารดา'
-                },
-                {
-                    Id: 3,
-                    Name: 'คู่สมรส'
-                },
-                {
-                    Id: 4,
-                    Name: 'บุตร'
-                },
-                {
-                    Id: 5,
-                    Name: 'ผู้ควบคุมดูแลสินทรัพย์'
-                },
-                {
-                    Id: 6,
-                    Name: 'ไม่มีส่วนเกี่ยวข้อง'
-                },
-            ],
-            proxy: {
-                type: 'memory'
-            }
+            autoLoad: true,
+            //data: [
+            //    {
+            //        Id: 1,
+            //        Name: 'บิดา'
+            //    },
+            //    {
+            //        Id: 2,
+            //        Name: 'มารดา'
+            //    },
+            //    {
+            //        Id: 3,
+            //        Name: 'คู่สมรส'
+            //    },
+            //    {
+            //        Id: 4,
+            //        Name: 'บุตร'
+            //    },
+            //    {
+            //        Id: 5,
+            //        Name: 'ผู้ควบคุมดูแลสินทรัพย์'
+            //    },
+            //    {
+            //        Id: 6,
+            //        Name: 'ไม่มีส่วนเกี่ยวข้อง'
+            //    },
+            //],
             //proxy: {
-            //    type: 'rest',
-            //    url: 'api/common/GetBusinessType',
-            //    reader: {
-            //            type: 'json'
-            //    }
+            //    type: 'memory'
             //}
+            proxy: {
+                type: 'rest',
+                url: 'api/common/GetPoliticianRelationship',
+                reader: {
+                        type: 'json'
+                }
+            }
         }, cfg)]);
     }
 });

@@ -29,6 +29,16 @@ namespace Com.Ktbl.RiskManagement.Map
             Map(x => x.TitleId).Column("TitleId").Precision(10);
             Map(x => x.PathFile).Column("file1").Length(100);
             Map(x => x.PathFile1).Column("file2").Length(100);
+            Map(x => x.RequestNo).Column("RequestNo").Length(100);
+            Map(x => x.AppKey).Column("AppId").Length(100);
+            Map(x => x.Result).Column("Result").Length(100);
+            Map(x => x.CreateBy).Column("CreateBy").Length(100);
+            Map(x => x.CreateDate).Column("CreateDate").Length(100);
+            Map(x => x.UpdateBy).Column("UpdateBy").Length(100);
+            Map(x => x.UpdateDate).Column("UpdateDate").Length(100);
+            
+            
+            
             //Table("PersonalRisks");
             //LazyLoad();
             //Id(x => x.Id, "ID").GeneratedBy.Increment();

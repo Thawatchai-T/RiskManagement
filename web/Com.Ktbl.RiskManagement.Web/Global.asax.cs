@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Com.Ktbl.RiskManagement.Process;
 using Spring.Web.Mvc;
 
 namespace Com.Ktbl.RiskManagement.Web
@@ -20,7 +21,8 @@ namespace Com.Ktbl.RiskManagement.Web
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            
+
+            JobScheduler.Start();
         }
 
         protected override System.Web.Http.Dependencies.IDependencyResolver BuildWebApiDependencyResolver()
